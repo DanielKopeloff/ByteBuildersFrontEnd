@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Project 2 - Binary Built: Built to Byte';
+  title = 'project2-frontendv2';
 }
