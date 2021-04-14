@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../../services/product.service';
 import {Product} from '../../common/product';
 
@@ -18,7 +18,6 @@ export class ProductListComponent implements OnInit {
     this.listProducts();
   }
 
-  // tslint:disable-next-line:typedef
   listProducts() {
     this.productService.getProductList().subscribe(
       data => {

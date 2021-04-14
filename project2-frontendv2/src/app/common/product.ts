@@ -5,7 +5,5 @@ export class Product {
   sku: string;
   picture: string;
   rating: number;
-  productCreated: null;
-  productTerminated: null;
   active: boolean;
 }
