@@ -1,5 +1,5 @@
 <p *ngFor="let product of products">
-  <img src="/assets/images/products/default-product-image.png" alt="" height="100" />
+  <img src="{{product.picture}}" alt="" height="100" />
   <br />
   {{product.description}}
 </p>
