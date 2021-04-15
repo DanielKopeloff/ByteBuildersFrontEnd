@@ -12,14 +12,13 @@ phases:
   pre_build:
     commands:
       - echo installing dependencies...
-      -  cd project2-frontendv2 npm i -g @angular/cli
       - cd project2-frontendv2 npm install
   build:
     commands:
       # - echo testing...
       # - echo building...
       - ls
-      -  cd project2-frontendv2 ng build --prod
+      -  npm buildprod
 artifacts:
   files:
     - '**/*'
