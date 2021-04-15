@@ -18,7 +18,7 @@ phases:
       # - echo testing...
       # - echo building...
       - ls
-      -  npm buildprod
+      -  npm run buildprod
 artifacts:
   files:
     - '**/*'
