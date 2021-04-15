@@ -12,7 +12,7 @@ phases:
   pre_build:
     commands:
       - echo installing dependencies...
-      - cd project2-frontendv2 npm install
+      - cd project2-frontendv2 && npm install
   build:
     commands:
       # - echo testing...
