@@ -22,7 +22,7 @@ phases:
 artifacts:
   files:
     - '**/*'
-    commands:
+  commands:
       - ls
   base-directory: './dist*'
   discard-paths: yes
