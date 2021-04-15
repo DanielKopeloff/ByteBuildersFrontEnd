@@ -23,6 +23,6 @@ artifacts:
   files:
     - '**/*'
   commands:
-      - ls
+    - ls
   base-directory: './dist*'
   discard-paths: yes
