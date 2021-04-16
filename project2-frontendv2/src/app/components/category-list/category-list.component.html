@@ -1,0 +1,9 @@
+<div class="container-fluid">
+  <div class="row">
+    <div *ngFor="let category of categories" class="col-md-4 mt-2 text-center">
+      <a routerLink="/category/{{ category.id }}" routerLinkActive="active-link" >
+        <h5>{{ category.categoryName | uppercase }}S</h5>
+      </a>
+    </div>
+  </div>
+</div>
