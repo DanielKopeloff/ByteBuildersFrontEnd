@@ -1,9 +1,9 @@
-<aside class="menu-side d-none d-lg-block">
-  <nav class="navbar-sidebar">
-    <ul class="list-unstyled navbar-list">
-      <li *ngFor="let category of categories">
-        <a routerLink="/category/{{ category.id }}" routerLinkActive="active-link">{{ category.categoryName | uppercase }}</a>
-      </li>
-    </ul>
-  </nav>
-</aside>
+<div class="container-fluid">
+  <div class="row">
+    <div *ngFor="let category of categories" class="col-md-4 mt-2 text-center">
+      <a routerLink="/category/{{ category.id }}" routerLinkActive="active-link" >
+        <h5>{{ category.categoryName | uppercase }}S</h5>
+      </a>
+    </div>
+  </div>
+</div>
