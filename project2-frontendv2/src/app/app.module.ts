@@ -11,6 +11,11 @@ import {CategoryListComponent} from './components/category-list/category-list.co
 import {RouterModule, Routes} from '@angular/router';
 import { SearchComponent } from './components/search/search.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { RegisterComponent } from './components/register/register.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
+import { LoginComponent } from './components/login/login.component';
+import { CartComponent } from './components/cart/cart.component';
+
 
 const routes: Routes = [
   {path: 'products/:id', component: ProductDetailsComponent},
@@ -18,8 +23,12 @@ const routes: Routes = [
   {path: 'category/:id/:name', component: ProductListComponent},
   {path: 'category', component: ProductListComponent},
   {path: 'products', component: ProductListComponent},
-  {path: '', redirectTo: '/products', pathMatch: 'full'},
-  {path: '**', redirectTo: '/products', pathMatch: 'full'}
+  {path: 'home', component: HomePageComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
+  {path: 'cart', component: CartComponent},
+  {path: '', redirectTo: '/', pathMatch: 'full'},
+  {path: '**', redirectTo: '/', pathMatch : 'full'}
 ];
 
 @NgModule({
@@ -30,6 +39,11 @@ const routes: Routes = [
     CategoryListComponent,
     SearchComponent,
     ProductDetailsComponent
+    SearchComponent
+    RegisterComponent,
+    HomePageComponent,
+    LoginComponent,
+    CartComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

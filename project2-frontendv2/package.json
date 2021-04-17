@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e" ,
+    "buildprod" : "ng build --prod"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +22,7 @@
     "@angular/router": "~11.1.1",
     "@fortawesome/fontawesome-free": "^5.15.3",
     "bootstrap": "^4.6.0",
+    "popper.js": "^1.16.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"

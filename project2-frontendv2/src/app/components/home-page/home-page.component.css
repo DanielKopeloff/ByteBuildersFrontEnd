@@ -1,0 +1,48 @@
+.product-search-bar {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+
+}
+
+/* .catBox{
+  text-align: center;
+  /* background-color: #1f6f8b ; 
+  border: 5px;
+  border-color: aquamarine;
+  position: relative;
+  left :0;
+  top: 0;
+  
+} */
+
+.catEntry{
+  text-align: left;
+}
+
+
+
+.hotItems{
+  text-align: center;
+
+}
+
+.newItems{
+  text-align: center;
+}
+
+.product-content {
+  margin: auto;
+  display: block;
+  text-align: center
+  
+}
+
+.itemDescriber{
+  font-size: small;
+}
+
+.items{
+  text-align: center;
+}
