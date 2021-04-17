@@ -9,13 +9,22 @@ import {ByteUserService} from './services/byte-user.service';
 import {ByteUserListComponent} from './components/byte-user-list/byte-user-list.component';
 import {CategoryListComponent} from './components/category-list/category-list.component';
 import {RouterModule, Routes} from '@angular/router';
+import { RegisterComponent } from './components/register/register.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
+import { LoginComponent } from './components/login/login.component';
+import { CartComponent } from './components/cart/cart.component';
+
 
 const routes: Routes = [
   {path: 'category/:id', component: ProductListComponent},
   {path: 'category', component: ProductListComponent},
   {path: 'products', component: ProductListComponent},
-  {path: '', redirectTo: '/products', pathMatch: 'full'},
-  {path: '**', redirectTo: '/products', pathMatch: 'full'}
+  {path: 'home', component: HomePageComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
+  {path: 'cart', component: CartComponent},
+  {path: '', redirectTo: '/', pathMatch: 'full'},
+  {path: '**', redirectTo: '/', pathMatch : 'full'}
 ];
 
 @NgModule({
@@ -23,7 +32,11 @@ const routes: Routes = [
     AppComponent,
     ProductListComponent,
     ByteUserListComponent,
-    CategoryListComponent
+    CategoryListComponent,
+    RegisterComponent,
+    HomePageComponent,
+    LoginComponent,
+    CartComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
