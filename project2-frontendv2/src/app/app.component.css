@@ -2,7 +2,19 @@
 .title {
   text-align: center;
   }
+.navBar {
+  background: #51c4d3;
+}  
+
+
 
 .footer{
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 25px;
+  /* background-color: #51c4d3; */
   text-align: center;
+  
 }  
