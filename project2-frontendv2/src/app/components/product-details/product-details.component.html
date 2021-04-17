@@ -1,0 +1,19 @@
+<div class="container-fluid">
+  <div class="container">
+    <div class="box row">
+      <div class="col-md-6">
+        <img src="{{product.picture}}" alt="Product Picture" class="img-responsive"/>
+      </div>
+      <div class="product-details col-md-6">
+        <div class="display-2">{{product.description | titlecase}}</div>
+        <div class="display-4 mt-5">{{product.price | currency: 'USD'}}</div>
+        <div class="display-4 mt-5">SKU#: {{ product.sku }}</div>
+        <div class="display-4 mt-5" *ngIf="product.stock === 0; else in_stock">Available: Out of Stock</div>
+        <ng-template #in_stock><div class="display-4 mt-5">Available: {{product.stock}}</div></ng-template>
+        <hr>
+        <a href="#" class="btn btn-primary btn-lg"><h4>Add to Cart</h4></a>
+      </div>
+    </div>
+    <a routerLink="/project" class="mt-5"><h5>Back to Products</h5></a>
+  </div>
+</div>
