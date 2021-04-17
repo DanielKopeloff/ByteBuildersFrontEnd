@@ -10,6 +10,7 @@ import {ByteUserListComponent} from './components/byte-user-list/byte-user-list.
 import {CategoryListComponent} from './components/category-list/category-list.component';
 import {RouterModule, Routes} from '@angular/router';
 import { SearchComponent } from './components/search/search.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { LoginComponent } from './components/login/login.component';
@@ -17,6 +18,7 @@ import { CartComponent } from './components/cart/cart.component';
 
 
 const routes: Routes = [
+  {path: 'products/:id', component: ProductDetailsComponent},
   {path: 'search/:keyword', component: ProductListComponent},
   {path: 'category/:id/:name', component: ProductListComponent},
   {path: 'category', component: ProductListComponent},
@@ -35,6 +37,8 @@ const routes: Routes = [
     ProductListComponent,
     ByteUserListComponent,
     CategoryListComponent,
+    SearchComponent,
+    ProductDetailsComponent
     SearchComponent
     RegisterComponent,
     HomePageComponent,
