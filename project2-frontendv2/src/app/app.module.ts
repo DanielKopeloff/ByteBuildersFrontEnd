@@ -9,9 +9,11 @@ import {ByteUserService} from './services/byte-user.service';
 import {ByteUserListComponent} from './components/byte-user-list/byte-user-list.component';
 import {CategoryListComponent} from './components/category-list/category-list.component';
 import {RouterModule, Routes} from '@angular/router';
+import { SearchComponent } from './components/search/search.component';
 
 const routes: Routes = [
-  {path: 'category/:id', component: ProductListComponent},
+  {path: 'search/:keyword', component: ProductListComponent},
+  {path: 'category/:id/:name', component: ProductListComponent},
   {path: 'category', component: ProductListComponent},
   {path: 'products', component: ProductListComponent},
   {path: '', redirectTo: '/products', pathMatch: 'full'},
@@ -23,7 +25,8 @@ const routes: Routes = [
     AppComponent,
     ProductListComponent,
     ByteUserListComponent,
-    CategoryListComponent
+    CategoryListComponent,
+    SearchComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

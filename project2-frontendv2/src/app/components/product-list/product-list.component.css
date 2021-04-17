@@ -4,39 +4,9 @@
   text-align: center
 }
 
-.product-search-bar {
-  display: table;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-}
-
 .main-content{
-  padding-top:116px;
-  min-height:100vh
-}
-
-aside.menu-sidebar.d-none.d-lg-block.clr{
-  background:0 0;
-  z-index:99999999;
-  height:75px;
-  box-shadow:-2px 0 4px #0000003b
-}
-
-
-.menu-sidebar{
-  width:200px;
-  position:fixed;
-  left:0;
-  top:0;
-  bottom:0;
-  background:#fff;
-  overflow-y:auto
-}
-
-.menu-sidebar .navbar-list .navbar-sub-list{
-  display:none;
-  padding-left:34px
+  padding-top:50px;
+  min-height:100vh;
 }
 
 .menu-sidebar .navbar-list .navbar-sub-list li a{
