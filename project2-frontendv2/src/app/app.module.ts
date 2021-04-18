@@ -9,6 +9,7 @@ import {ByteUserService} from './services/byte-user.service';
 import {ByteUserListComponent} from './components/byte-user-list/byte-user-list.component';
 import {CategoryListComponent} from './components/category-list/category-list.component';
 import {RouterModule, Routes} from '@angular/router';
+
 import {SearchComponent} from './components/search/search.component';
 import {ProductDetailsComponent} from './components/product-details/product-details.component';
 import {RegisterComponent} from './components/register/register.component';
@@ -16,6 +17,12 @@ import {HomePageComponent} from './components/home-page/home-page.component';
 import {LoginComponent} from './components/login/login.component';
 import {CartComponent} from './components/cart/cart.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { RegisterComponent } from './components/register/register.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
+import { LoginComponent } from './components/login/login.component';
+import { CartComponent } from './components/cart/cart.component';
+import { CartStatusComponent } from './components/cart-status/cart-status.component';
+
 
 const routes: Routes = [
   {path: 'products/:id', component: ProductDetailsComponent},
@@ -27,8 +34,9 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'cart', component: CartComponent},
-  {path: '', redirectTo: '/', pathMatch: 'full'},
-  {path: '**', redirectTo: '/', pathMatch: 'full'}
+
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: '**', redirectTo: '/home', pathMatch : 'full'}
 ];
 
 @NgModule({
@@ -43,7 +51,8 @@ const routes: Routes = [
     RegisterComponent,
     HomePageComponent,
     LoginComponent,
-    CartComponent
+    CartComponent,
+    CartStatusComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
