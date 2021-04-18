@@ -1,1 +1,73 @@
-<p>cart works!</p>
+<div class="main-content">
+  <div class="section-content section-content-p30">
+    <div class="container-fluid">
+
+      <div *ngIf="products.length > 0">
+        <table class="table cartTable table-bordered table-md">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th colspan="2" headers="Item">Item</th>
+              <th scope="col">Stock</th>
+              <th scope="col">Unit Price</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Subtotal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cartItem of products">
+              <td>Item # <br>{{cartItem.id}}</td>
+              <td headers="Item"><img src="{{cartItem.imageUrl}}" alt="" class="img-responsive" height="100" /></td>
+              <td>{{cartItem.description}}</td>
+              <td *ngIf=" cartItem.stock === 0 || cartItem.stock < 0" class="stock">Out Of Stock </td>
+              <td *ngIf=" cartItem.stock > 10 || cartItem.stock === 10" class="stock">In Stock</td>
+              <td *ngIf=" cartItem.stock < 10 " class="stock">Low Stock </td>
+              <td><a style="color: white;">{{cartItem.unitPrice| currency:'USD'}}</a></td>
+              <td><div class="items">
+  
+                <div class="row no-gutters">
+                  <div class="col">
+                    <button (click)="incrementQuantity(cartItem)" class="btn btn-primary btn-sm">
+                      <i class="fas fa-plus"></i>
+                    </button>
+                  </div>
+                  <div class="col ml-4 mr-2" >{{cartItem.quantity}}</div>
+
+                  <div class="col">
+                    <button (click)="decrementQuantity(cartItem)" class="btn btn-primary btn-sm">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                  </div>
+
+                  <br>
+                  <div class="col">
+                    <button (click)="remove(cartItem)" class="btn btn-primary btn-sm mt-2" style="justify-content: end;">
+                      Remove
+                    </button>
+                  </div>
+
+                </div>
+              </div>
+              </td>
+              <td>
+                <p class="mt-2"> {{cartItem.unitPrice * cartItem.quantity | currency:'USD'}}</p>
+              </td>
+            </tr>
+  
+            <tr>
+              <td colspan="2"></td>
+              <td style="font-weight:bold">
+                <p>Total Quantity : {{totalQuantity}}</p>
+                <p>Total Price : {{totalPrice.toFixed(2) | currency:'USD'}}</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div *ngIf="products.length === 0" class="alert alert-warning col-md-12" role ="alert">Your Shopping Cart is Empty</div>
+     
+
+    </div>
+  </div>
+</div>

@@ -30,7 +30,7 @@
 
     
     <div class="container items" >
-      <a href="/products" class="">Hot Items </a><br><br>
+      <a routerLink="/products" class="">Hot Items </a><br><br>
       <div class="container hotItems col ">
         <div class="main-content">
           <div class="section-content section-content-p30">
@@ -42,7 +42,7 @@
                     <div class="itemDescriber my-2 mx-auto">
                       <a style="color: cornflowerblue; font-size: small;">{{product.description | titlecase}}</a> <br>
                       <a style="color: aqua;">{{product.price | currency:'USD'}}</a> <br>
-                      <a href="/cart" class="primary-btn">Add to cart</a>
+                      <button (click)="addToCart(product)"  class="btn btn-primary btn-sm" >Add to cart</button>
                       <hr/>
                     </div>
                   </div>
@@ -53,7 +53,7 @@
         </div>
       </div>
       
-      <a href="/products" class="">New Items </a><br><br>
+      <a routerLink="/products" class="">New Items </a><br><br>
       <div class="container newItems col">
         <div class="main-content">
           <div class="section-content section-content-p30">
@@ -65,7 +65,7 @@
                     <div class="itemDescriber my-2 mx-auto">
                       <a style="color: cornflowerblue; font-size: small;">{{product.description | titlecase}}</a> <br>
                       <a style="color: aqua;">{{product.price | currency:'USD'}}</a> <br>
-                      <a href="/cart" class="primary-btn">Add to cart</a>
+                      <button (click)="addToCart(product)"  class="btn btn-primary btn-sm" >Add to cart</button>
                       <hr/>
                     </div>
                   </div>
