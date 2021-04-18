@@ -15,9 +15,8 @@ import {RegisterComponent} from './components/register/register.component';
 import {HomePageComponent} from './components/home-page/home-page.component';
 import {LoginComponent} from './components/login/login.component';
 import {CartComponent} from './components/cart/cart.component';
-import { CartStatusComponent } from './components/cart-status/cart-status.component';
-
-import{NgbModule} from '@ng-bootstrap/ng-bootstrap'
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {CartStatusComponent} from './components/cart-status/cart-status.component';
 
 
 
@@ -34,7 +33,7 @@ const routes: Routes = [
   {path: 'cart', component: CartComponent},
 
   {path: '', redirectTo: '/home', pathMatch: 'full'},
-  {path: '**', redirectTo: '/home', pathMatch : 'full'}
+  {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
 
 @NgModule({
