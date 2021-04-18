@@ -6,29 +6,16 @@
 
 }
 
-/* .catBox{
-  text-align: center;
-  /* background-color: #1f6f8b ; 
-  border: 5px;
-  border-color: aquamarine;
-  position: relative;
-  left :0;
-  top: 0;
-  
-} */
-
-.catEntry{
+.catEntry {
   text-align: left;
 }
 
-
-
-.hotItems{
+.hotItems {
   text-align: center;
 
 }
 
-.newItems{
+.newItems {
   text-align: center;
 }
 
@@ -36,13 +23,18 @@
   margin: auto;
   display: block;
   text-align: center
-  
+
 }
 
-.itemDescriber{
-  font-size: small;
+.itemDescriber {
+  font-size: medium;
 }
 
-.items{
+.items {
   text-align: center;
+}
+
+a:hover {
+  color: lightskyblue;
+  text-decoration: none;
 }

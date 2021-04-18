@@ -2,11 +2,6 @@
 .title {
   text-align: center;
   }
-.navBar {
-  background: #51c4d3;
-}  
-
-
 
 .footer{
   position: relative;
@@ -16,5 +11,5 @@
   height: 25px;
   /* background-color: #51c4d3; */
   text-align: center;
-  
-}  
+
+}

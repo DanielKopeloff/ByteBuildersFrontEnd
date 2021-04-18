@@ -1,49 +1,35 @@
 <div class="page-wrapper">
   <div class="container my-3">
-    <div class="input-group product-search-bar mb-2">
-      <div class="form-outline">
-        <input type="search" id="form1" class="form-control" placeholder="Search"/>
-        <button type="button" class="btn btn-block btn-primary product-search-bar mt-1">
-          <label class="form-label" for="form1">Search</label>
-        </button>
-      </div>
-    </div>
-    <div class="align-self-start float-left col-md-2" style="background-color: aliceblue;" >
-      <div class="dropdown dropstart">
-        <a class="nav-link btn" id="catDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Category</a>
-        <ul class="dropdown-menu" aria-labelledby="catDropdown" >
-          <li *ngFor="let category of categories" class="catEntry">
-            <a routerLink="/category/{{ category.id }}" routerLinkActive="active-link" >
-              {{ category.categoryName | uppercase }}
-            </a>
-        </ul>
-      </div>
-     
-    </div>
-    <div class="container float-right" style="background-color: wheat;">
+    <!--    <div class="align-self-start float-left col-md-2">-->
+    <!--      <div class="dropdown dropstart">-->
+    <!--        <a class="nav-link btn" id="catDropdown" role="button" data-bs-toggle="dropdown"-->
+    <!--           aria-expanded="false">Category</a>-->
+    <!--        <ul class="dropdown-menu" aria-labelledby="catDropdown">-->
+    <!--          <li *ngFor="let category of categories" class="catEntry">-->
+    <!--            <a routerLink="/category/{{ category.id }}" routerLinkActive="active-link">-->
+    <!--              {{ category.categoryName | uppercase }}-->
+    <!--            </a>-->
+    <!--        </ul>-->
+    <!--      </div>-->
+    <!--    </div>-->
+    <div class="container">
       <div class="row">
-       
-  </div> 
-
-</div>
-
-
-    
-    <div class="container items" >
-      <a routerLink="/products" class="">Hot Items </a><br><br>
-      <div class="container hotItems col ">
+      </div>
+    </div>
+    <div class="container items">
+      <a routerLink="/products"><h5 class="display-4 mt-3">Hot Items</h5></a>
+      <div class="container hotItems col my-5">
         <div class="main-content">
           <div class="section-content section-content-p30">
             <div class="container-fluid">
               <div class="row">
                 <div *ngFor="let product of products" class="col-md-3 ">
                   <div class="product-content">
-                    <img src="{{product.picture}}" alt="" class="img-responsive" height="100"/>
+                    <a href="#"><img src="{{product.picture}}" alt="" class="img-responsive" height="100"/></a>
                     <div class="itemDescriber my-2 mx-auto">
-                      <a style="color: cornflowerblue; font-size: small;">{{product.description | titlecase}}</a> <br>
-                      <a style="color: aqua;">{{product.price | currency:'USD'}}</a> <br>
-                      <button (click)="addToCart(product)"  class="btn btn-primary btn-sm" >Add to cart</button>
-                      <hr/>
+                      <a href="#"><h5>{{product.description | titlecase}}</h5></a>
+                      <h5 class="mb-2">{{product.price | currency:'USD'}}</h5>
+                      <button (click)="addToCart(product)" class="btn btn-primary mt-2 mb-5">Add to cart</button>
                     </div>
                   </div>
                 </div>
@@ -52,21 +38,20 @@
           </div>
         </div>
       </div>
-      
-      <a routerLink="/products" class="">New Items </a><br><br>
-      <div class="container newItems col">
+
+      <a routerLink="/products" ><h5 class="display-4">New Items</h5></a>
+      <div class="container newItems col my-5">
         <div class="main-content">
           <div class="section-content section-content-p30">
             <div class="container-fluid">
               <div class="row">
                 <div *ngFor="let product of products" class="col-md-3 ">
                   <div class="product-content">
-                    <img src="{{product.picture}}" alt="" class="img-responsive" height="100"/>
+                    <a href="#"><img src="{{product.picture}}" alt="" class="img-responsive" height="100"/></a>
                     <div class="itemDescriber my-2 mx-auto">
-                      <a style="color: cornflowerblue; font-size: small;">{{product.description | titlecase}}</a> <br>
-                      <a style="color: aqua;">{{product.price | currency:'USD'}}</a> <br>
-                      <button (click)="addToCart(product)"  class="btn btn-primary btn-sm" >Add to cart</button>
-                      <hr/>
+                      <a href="#"><h5>{{product.description | titlecase}}</h5></a>
+                      <h5>{{product.price | currency:'USD'}}</h5>
+                      <button (click)="addToCart(product)" class="btn btn-primary mt-2 mb-5">Add to cart</button>
                     </div>
                   </div>
                 </div>
@@ -76,8 +61,6 @@
         </div>
       </div>
     </div>
-    
-    
   </div>
 </div>
 
