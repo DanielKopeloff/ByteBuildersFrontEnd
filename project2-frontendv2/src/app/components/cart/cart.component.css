@@ -1,11 +1,7 @@
-.cartTable{
-  color: whitesmoke;
-}
-
 #quantity{
   width: 50px;
 }
 
 .stock{
-  text-align: middle;
+  text-align: center;
 }
