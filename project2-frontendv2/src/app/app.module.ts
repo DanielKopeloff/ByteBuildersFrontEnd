@@ -13,6 +13,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { LoginComponent } from './components/login/login.component';
 import { CartComponent } from './components/cart/cart.component';
+import { CartStatusComponent } from './components/cart-status/cart-status.component';
 
 
 const routes: Routes = [
@@ -36,7 +37,8 @@ const routes: Routes = [
     RegisterComponent,
     HomePageComponent,
     LoginComponent,
-    CartComponent
+    CartComponent,
+    CartStatusComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

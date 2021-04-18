@@ -42,7 +42,7 @@
                     <div class="itemDescriber my-2 mx-auto">
                       <a style="color: cornflowerblue; font-size: small;">{{product.description | titlecase}}</a> <br>
                       <a style="color: aqua;">{{product.price | currency:'USD'}}</a> <br>
-                      <a href="/cart" class="primary-btn">Add to cart</a>
+                      <button (click)="addToCart(product)" href="/cart" class="btn btn-primary btn-sm" >Add to cart</button>
                       <hr/>
                     </div>
                   </div>
@@ -65,7 +65,7 @@
                     <div class="itemDescriber my-2 mx-auto">
                       <a style="color: cornflowerblue; font-size: small;">{{product.description | titlecase}}</a> <br>
                       <a style="color: aqua;">{{product.price | currency:'USD'}}</a> <br>
-                      <a href="/cart" class="primary-btn">Add to cart</a>
+                      <button (click)="addToCart(product)" href="/cart" class="btn btn-primary btn-sm" >Add to cart</button>
                       <hr/>
                     </div>
                   </div>

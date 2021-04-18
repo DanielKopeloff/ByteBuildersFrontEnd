@@ -1,1 +1,32 @@
-<p>cart works!</p>
+<div class="container-fluid">
+  <table class="table cartTable table-bordered table-md">
+    <thead>
+      <tr>
+        <th scope="col">SKU</th> 
+        <th colspan="2" headers="Item">Item</th>
+        <th scope="col">Stock</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+
+          <td >Item # <br>{{product.sku}}</td> 
+          <td headers="Item"><img src="{{product.picture}}" alt="" class="img-responsive" height="100"/></td>
+          <td>{{product.description}}</td>
+          <td *ngIf=" product.stock === 0 || product.stock < 0" class="stock">Out Of Stock </td>
+          <td *ngIf=" product.stock > 10 || product.price === 10" class="stock">In Stock</td>
+          <td *ngIf=" product.stock < 10 " class="stock">Low Stock </td>
+          <td><input type="number" id="quantity" name="quantity" min="1" max="10" value="1"></td>
+          <td><a style="color: white;">{{product.price | currency:'USD'}}</a></td>
+        </tr>
+      
+
+    </tbody>
+  </table>
+
+  <div class="container float-right" style="background-color: aquamarine;">Total</div>
+
+
+</div> 
