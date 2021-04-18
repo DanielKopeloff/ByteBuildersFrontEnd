@@ -24,8 +24,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'cart', component: CartComponent},
-  {path: '', redirectTo: '/', pathMatch: 'full'},
-  {path: '**', redirectTo: '/', pathMatch : 'full'}
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: '**', redirectTo: '/home', pathMatch : 'full'}
 ];
 
 @NgModule({

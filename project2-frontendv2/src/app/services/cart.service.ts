@@ -10,9 +10,11 @@ import { CartItem } from '../common/cart-item';
   providedIn: 'root'
 })
 export class CartService {
+  
 
   private baseUrl = "http://localhost:8080/api/product/search/cart";
   cartItems:CartItem[] = [];
+  
   
   totalPrice : Subject<number> = new Subject<number>();
   
@@ -43,7 +45,7 @@ export class CartService {
       
       existingCartItem = this.cartItems.find( temp =>  temp.id === theCartItem.id);
 
-        alreadyExistsInCart =(existingCartItem!=undefined);
+        alreadyExistsInCart = (existingCartItem!=undefined);
     }
 
     if(alreadyExistsInCart){
@@ -68,7 +70,7 @@ export class CartService {
     this.totalQuantity.next(totalQuantity);
 
     //log cart data just for debugging 
-    this.logCartData(totalQuantity , totalSum);
+    //this.logCartData(totalQuantity , totalSum);
   
   }
   logCartData(totalQuantity: number, totalSum: number) {
@@ -78,12 +80,41 @@ export class CartService {
     console.log(`name: ${temp.description},quantity= ${temp.quantity} ,
      unit Price=${temp.unitPrice} , subtotal=${subTotalPrice}`)
   }
-  console.log(`total price= ${totalSum.toFixed(2)} , total Quantiy=${totalQuantity}`)
+  console.log(`total price= ${totalSum.toFixed(2)} , total Quantity=${totalQuantity}`)
   console.log("=====");
   }
 
 
-    
+  removeItem(theCartItem: CartItem) {
+    let alreadyExistsInCart : boolean;
+    let existingCartItem: CartItem = undefined;
+
+    if(this.cartItems.length > 0){
+      
+      existingCartItem = this.cartItems.find( temp =>  temp.id === theCartItem.id);
+
+        alreadyExistsInCart = (existingCartItem!=undefined);
+    }
+
+    if(alreadyExistsInCart){
+      existingCartItem.quantity--;
+      if(existingCartItem.quantity === 0){
+         this.remove(existingCartItem);
+      }
+    }
+  
+
+    this.computeCartTotals();
+  }
+
+  remove(carItem:CartItem ){
+    const itemIndex = this.cartItems.findIndex( tempCartItem => tempCartItem.id === carItem.id );
+    if(itemIndex >-1){
+      this.cartItems.splice(itemIndex ,1);
+      this.computeCartTotals();
+    }
+  }  
+
 }
 
 interface GetResponseProducts {
