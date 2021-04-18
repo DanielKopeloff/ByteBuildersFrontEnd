@@ -1,9 +1,12 @@
 export class Product {
+  id: number;
   description: string;
-  stock: number;
-  price: number;
-  sku: string;
+  isActive: boolean;
   picture: string;
+  price: number;
+  productCreated: Date;
+  productTerminated: Date;
   rating: number;
-  active: boolean;
+  sku: string;
+  stock: number;
 }
