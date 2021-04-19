@@ -1,0 +1,166 @@
+<div class="checkout-forms">
+  <div class="section-content section-p30">
+    <div class="container-fluid">
+      <form [formGroup]="checkoutFormGroup" (ngSubmit)="onSubmit()">
+        <div formGroupName="byteUser" class="form-group">
+          <h3 class="display-4 text-center mt-5 mb-5">Customer Information</h3>
+          <div class="row my-4">
+            <div class="col-md-11"><h5><label for="input-lg-first-name">First Name:</label></h5></div>
+            <div class="input-group">
+              <input id="input-lg-first-name" class="form-control input-lg input-lg" type="text"
+                     formControlName="firstName">
+            </div>
+          </div>
+          <div class="row my-4">
+            <div class="col-md-11"><h5><label for="input-lg-last-name">Last Name:</label></h5></div>
+            <div class="input-group">
+              <input id="input-lg-last-name" class="form-control input-lg input-lg" type="text"
+                     formControlName="lastName">
+            </div>
+          </div>
+          <div class="row my-4">
+            <div class="col-md-11"><h5><label for="input-lg-email">Email:</label></h5></div>
+            <div class="input-group">
+              <input id="input-lg-email" class="form-control input-lg input-lg" type="email" formControlName="email">
+            </div>
+          </div>
+        </div>
+
+        <div formGroupName="shippingAddress" class="form-group">
+          <h3 class="display-4 text-center mt-5 mb-5">Shipping Address</h3>
+          <div class="row my-4">
+            <div class="col-md-11"><h5><label for="shipping-street">Street Name:</label></h5></div>
+            <div class="input-group">
+              <input id="shipping-street" class="form-control input-lg input-lg" type="text"
+                     formControlName="street">
+            </div>
+          </div>
+          <div class="row my-4">
+            <div class="col-md-11"><h5><label for="input-lg-shipping-city">City:</label></h5></div>
+            <div class="input-group">
+              <input id="input-lg-shipping-city" class="form-control input-lg input-lg" type="text"
+                     formControlName="city">
+            </div>
+          </div>
+          <div class="row my-4">
+            <div class="col-md-11"><h5><label for="input-lg-shipping-state">State:</label></h5></div>
+            <div class="input-group">
+              <select id="input-lg-shipping-state" class="form-control input-lg input-lg" type="text"
+                      formControlName="state">
+                <option value="">TO DO</option>
+              </select>
+            </div>
+          </div>
+          <div class="row my-4">
+            <div class="col-md-11"><h5><label for="input-lg-shipping-zip-code">Zip Code:</label></h5></div>
+            <div class="input-group">
+              <input id="input-lg-shipping-zip-code" class="form-control input-lg input-lg" type="email"
+                     formControlName="zipCode">
+            </div>
+          </div>
+        </div>
+
+        <div formGroupName="shippingAddress" class="form-group">
+          <h3 class="display-4 text-center mt-5 mb-5">Billing Address</h3>
+          <div class="row my-4">
+            <div class="col-md-11"><h5><label for="billing-street">Street Name:</label></h5></div>
+            <div class="input-group">
+              <input id="billing-street" class="form-control input-lg input-lg" type="text"
+                     formControlName="street">
+            </div>
+          </div>
+          <div class="row my-4">
+            <div class="col-md-11"><h5><label for="input-lg-billing-city">City:</label></h5></div>
+            <div class="input-group">
+              <input id="input-lg-billing-city" class="form-control input-lg input-lg" type="text"
+                     formControlName="city">
+            </div>
+          </div>
+          <div class="row my-4">
+            <div class="col-md-11"><h5><label for="input-lg-billing-state">State:</label></h5></div>
+            <div class="input-group">
+              <select id="input-lg-billing-state" class="form-control input-lg input-lg" type="text"
+                      formControlName="state">
+                <option value="">TO DO</option>
+              </select>
+            </div>
+          </div>
+          <div class="row my-4">
+            <div class="col-md-11"><h5><label for="input-lg-billing-zip-code">Zip Code:</label></h5></div>
+            <div class="input-group">
+              <input id="input-lg-billing-zip-code" class="form-control input-lg input-lg" type="email"
+                     formControlName="zipCode">
+            </div>
+          </div>
+        </div>
+
+        <div formGroupName="creditCard" class="form-group">
+          <h3 class="display-4 text-center mt-5 mb-5">Credit Card Information</h3>
+          <div class="row my-4">
+            <div class="col-md-11"><h5><label for="name-on-card">Name on Card:</label></h5></div>
+            <div class="input-group">
+              <input id="name-on-card" class="form-control input-lg input-lg" type="text"
+                     formControlName="nameOnCard">
+            </div>
+          </div>
+          <div class="row my-4">
+            <div class="col-md-11"><h5><label for="credit-card-type">Credit Card Type:</label></h5></div>
+            <div class="input-group">
+              <select id="credit-card-type" class="form-control"
+                      formControlName="cardType">
+                <option value="visa" selected>VISA</option>
+                <option value="visa">MasterCard</option>
+                <option value="visa" selected>Discover</option>
+                <option value="visa" selected>American Express</option>
+              </select>
+            </div>
+          </div>
+          <div class="row my-4">
+            <div class="col-md-11"><h5><label for="credit-card-number">Credit Card #:</label></h5></div>
+            <div class="input-group">
+              <input id="credit-card-number" class="form-control input-lg input-lg" type="number"
+                     formControlName="cardNumber">
+            </div>
+          </div>
+          <div class="row mt-4 text-center">
+            <div class="col-md-4"><h5><label for="credit-card-security-code">Security Code #:</label></h5></div>
+            <div class="col-md-4"><h5><label for="credit-card-expiration-month">Exp Month:</label></h5></div>
+            <div class="col-md-4"><h5><label for="credit-card-expiration-year">Exp Year:</label></h5></div>
+          </div>
+          <div class="row mb-5">
+            <div class="col-md-4 input-group">
+              <input id="credit-card-security-code" class="form-control input-lg input-lg" type="text"
+                     formControlName="securityCode">
+            </div>
+            <div class="col-md-4 input-group">
+              <select id="credit-card-expiration-month" class="form-control"
+                      formControlName="expirationMonth">
+                <option value="">TO DO</option>
+              </select>
+            </div>
+            <div class="col-md-4 input-group">
+              <select id="credit-card-expiration-year" class="form-control"
+                      formControlName="expirationYear">
+                <option value="">TO DO</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="review-order row p-3">
+            <div class="col-md-12">
+              <h3 class="display-4">Review Your Order</h3>
+            </div>
+            <div class="col-md-12 mt-2">
+              <h5>Total Quantity: {{totalQuantity}}</h5>
+            </div>
+            <div class="col-md-12 mt-2">
+              <h5>Total Price: {{totalPrice | currency: 'USD'}}</h5>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-success btn-lg btn-block">Purchase</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/common/category';
 import {ProductService} from '../../services/product.service';
 import {Product} from '../../common/product';
-import {ActivatedRoute} from '@angular/router';
+import { CartItem } from 'src/app/common/cart-item';
+import { CartService } from 'src/app/services/cart.service';
+
 
 @Component({
   selector: 'app-home-page',
@@ -15,7 +17,8 @@ export class HomePageComponent implements OnInit {
   products : Product[];
   currentCategoryId: number;
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService ,
+              private cartService: CartService) {
   }
 
   ngOnInit(): void {
@@ -40,7 +43,15 @@ export class HomePageComponent implements OnInit {
         this.products = data;
          this.products = this.products.slice(0,8)
       }
-    );  
+    );
+  }
+
+  addToCart(tempProduct: Product){
+    console.log(`Adding to cart ${tempProduct.description} , ${tempProduct.price}`);
+
+    const theCartItem = new CartItem(tempProduct);
+
+    this.cartService.addToCart(theCartItem);
   }
 }
 

@@ -13,6 +13,7 @@ phases:
     commands:
       - echo installing dependencies...
       - cd project2-frontendv2 npm install
+      - npm i  @ng-bootstrap/ng-bootstrap --legacy-peer-deps
   build:
     commands:
       # - echo testing...

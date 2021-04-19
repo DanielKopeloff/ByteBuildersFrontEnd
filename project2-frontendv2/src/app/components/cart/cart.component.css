@@ -1,0 +1,11 @@
+#quantity {
+  width: 50px;
+}
+
+.cartTable tr th, .cartTable tr td, .stock, .cart-remove-item-button, .item-quantity-in-cart {
+  text-align: center;
+}
+
+.checkout-button {
+  text-align: right !important;
+}

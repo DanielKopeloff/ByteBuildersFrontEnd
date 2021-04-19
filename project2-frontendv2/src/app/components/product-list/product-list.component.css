@@ -45,3 +45,16 @@
 }
 
 
+.footer-pagination .row {
+  display: block;
+  margin-left: 50%;
+}
+
+.pagination-dropdown {
+  text-align: right;
+  color: #fff;
+}
+
+.fa-home {
+  background: none;
+}
