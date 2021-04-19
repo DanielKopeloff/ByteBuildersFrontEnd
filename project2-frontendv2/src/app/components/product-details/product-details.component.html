@@ -5,15 +5,29 @@
         <img src="{{product.picture}}" alt="Product Picture" class="img-responsive"/>
       </div>
       <div class="product-details col-md-6">
-        <div class="display-2">{{product.description | titlecase}}</div>
-        <div class="display-4 mt-5">{{product.price | currency: 'USD'}}</div>
-        <div class="display-4 mt-5">SKU#: {{ product.sku }}</div>
-        <div class="display-4 mt-5" *ngIf="product.stock === 0; else in_stock">Available: Out of Stock</div>
-        <ng-template #in_stock><div class="display-4 mt-5">Available: {{product.stock}}</div></ng-template>
+        <div class="title">{{product.description | titlecase}}</div>
+        <div class="text mt-5">Rating - {{product.rating}} / 5</div>
+        <div class="text mt-5">{{product.price | currency: 'USD'}}</div>
+        <div class="text mt-5">SKU#: {{ product.sku }}</div>
+        <div class="text mt-5" *ngIf="product.stock === 0; else in_stock">Available: Out of Stock</div>
+        <ng-template #in_stock><div class="text mt-5">Available: {{product.stock}}</div></ng-template>
         <hr>
-        <a (click)="addToCart(product)" class="btn btn-primary btn-lg"><h4>Add to Cart</h4></a>
+        <a (click)="addReview(product)" class="btn btn-primary btn-sm ml-2"><h4>Add Review</h4></a>
+        <a (click)="seeReviews(product)" class="btn btn-primary btn-sm ml-2"><h4>See Reviews</h4></a>
+        <a (click)="addToCart(product)" class="btn btn-primary btn-sm ml-2"><h4>Add to Cart</h4></a>
+
       </div>
+      <a routerLink="/products" class=""><h5>Back to Products</h5></a>
     </div>
-    <a routerLink="/project" class="mt-5"><h5>Back to Products</h5></a>
   </div>
+  <div *ngIf="addReviewForm">
+    <app-add-review></app-add-review></div>  
+    <br><br>
+  <div *ngIf="allReviews">
+    <app-review-list></app-review-list></div>
+
+    
 </div>
+
+
+

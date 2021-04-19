@@ -17,6 +17,9 @@ import {LoginComponent} from './components/login/login.component';
 import {CartComponent} from './components/cart/cart.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {CartStatusComponent} from './components/cart-status/cart-status.component';
+import { AddReviewComponent } from './components/add-review/add-review.component';
+import { ReviewListComponent } from './components/review-list/review-list.component';
+
 
 
 
@@ -49,7 +52,9 @@ const routes: Routes = [
     HomePageComponent,
     LoginComponent,
     CartComponent,
-    CartStatusComponent
+    CartStatusComponent,
+    AddReviewComponent,
+    ReviewListComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

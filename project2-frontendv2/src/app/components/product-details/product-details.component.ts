@@ -4,6 +4,7 @@ import {ProductService} from '../../services/product.service';
 import {Product} from '../../common/product';
 import { CartItem } from 'src/app/common/cart-item';
 import { CartService } from 'src/app/services/cart.service';
+import { ReviewService } from 'src/app/services/review.service';
 
 @Component({
   selector: 'app-product-details',
@@ -13,10 +14,13 @@ import { CartService } from 'src/app/services/cart.service';
 export class ProductDetailsComponent implements OnInit {
 
   product: Product = new Product ();
+  allReviews:boolean = false;
+  addReviewForm : boolean = false;
 
   constructor(private productService: ProductService,
               private route: ActivatedRoute ,
-              private cartService:CartService) { }
+              private cartService:CartService ,
+              private reviewService : ReviewService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
@@ -42,6 +46,21 @@ export class ProductDetailsComponent implements OnInit {
     const theCartItem = new CartItem(tempProduct);
 
     this.cartService.addToCart(theCartItem);
+  }
+
+  fillRating(rating : number){
+
+
+  }
+
+  seeReviews(product: Product){
+    this.reviewService.setProdId(product.id);  
+    this.allReviews = true;
+     
+  }
+
+  addReview(product : Product){
+    this.addReviewForm = true;
   }
 
 }
