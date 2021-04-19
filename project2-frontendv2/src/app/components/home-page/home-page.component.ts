@@ -14,7 +14,7 @@ import { CartService } from 'src/app/services/cart.service';
 export class HomePageComponent implements OnInit {
 
   categories: Category[];
-  products : Product[];
+  products: Product[];
   currentCategoryId: number;
 
   constructor(private productService: ProductService ,
@@ -30,18 +30,18 @@ export class HomePageComponent implements OnInit {
   listCategories() {
     this.productService.getCategories().subscribe(
       data => {
-        //console.log('Product Categories=' + JSON.stringify(data));
+        // console.log('Product Categories=' + JSON.stringify(data));
         this.categories = data;
       }
     );
-  };
+  }
 
   listProducts(){
     this.productService.getAllProductList().subscribe(
       data => {
         // console.log('Product Categories=' + JSON.stringify(data));
         this.products = data;
-         this.products = this.products.slice(0,8)
+        this.products = this.products.slice(0, 8);
       }
     );
   }
