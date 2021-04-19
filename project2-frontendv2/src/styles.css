@@ -17,7 +17,7 @@ body {
 -------------------------------------------------- */
 html {
   position: relative;
-  min-height: 125vh;
+  min-height: 193vh;
 }
 
 .footer {
@@ -32,4 +32,18 @@ html {
 footer {
   text-align: center;
   padding: 2%;
+}
+
+.checkout-forms {
+  width: 50%;
+  margin: auto;
+}
+
+.checkout-forms button {
+  width: 50%;
+  margin-left: 25%;
+}
+
+.checkout-forms input {
+  border-radius: 10px;
 }

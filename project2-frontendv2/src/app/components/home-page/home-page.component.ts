@@ -18,7 +18,7 @@ export class HomePageComponent implements OnInit {
   currentCategoryId: number;
 
   constructor(private productService: ProductService ,
-               private cartService:CartService) {
+              private cartService: CartService) {
   }
 
   ngOnInit(): void {
@@ -43,7 +43,7 @@ export class HomePageComponent implements OnInit {
         this.products = data;
          this.products = this.products.slice(0,8)
       }
-    );  
+    );
   }
 
   addToCart(tempProduct: Product){
