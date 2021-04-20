@@ -1,6 +1,6 @@
-<table class="table">
-  <tbody>
-    <tr *ngFor="let user of users;let i = index" class="{{i}} col-sm-2">
+<table class="table mt-2 ">
+  <tbody class="mt-2">
+    <tr *ngFor="let user of users;let i = index" class="{{i}} col-sm-2 mt-2">
       <img src={{user.profilePic}} alt="" style="height: 100px;">
       <a class="mt-2" style="display: block;">{{user.username}}</a>
     </tr>

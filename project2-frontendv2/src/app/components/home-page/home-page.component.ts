@@ -14,7 +14,8 @@ import { CartService } from 'src/app/services/cart.service';
 export class HomePageComponent implements OnInit {
 
   categories: Category[];
-  products : Product[];
+  hotItems : Product[];
+  newItems :Product[];
   currentCategoryId: number;
 
   constructor(private productService: ProductService ,
@@ -37,13 +38,22 @@ export class HomePageComponent implements OnInit {
   };
 
   listProducts(){
-    this.productService.getAllProductList().subscribe(
+    this.productService.getHotProductList().subscribe(
       data => {
         // console.log('Product Categories=' + JSON.stringify(data));
-        this.products = data;
-         this.products = this.products.slice(0,8)
+        this.hotItems = data;
+         this.hotItems = this.hotItems.slice(0,8)
       }
     );
+
+    this.productService.getNewProductList().subscribe(
+      data => {
+        // console.log('Product Categories=' + JSON.stringify(data));
+        this.newItems = data;
+         this.newItems = this.newItems.slice(0,8)
+      }
+    );
+
   }
 
   addToCart(tempProduct: Product){
