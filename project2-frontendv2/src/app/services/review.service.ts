@@ -12,22 +12,26 @@ export class ReviewService {
 
   prodID : number;
 
-  private baseUrl = 'http://localhost:8080/api/review/search/product_reviews';
+  private getAllReviews = 'http://localhost:8080/api/review/search/product_reviews';
+  private getByteOrder= 'http://localhost:8080/api/byte-order/search/byteOrderReview/';
+  private postReview = 'http://localhost:8080/api/review';
+
 
   constructor(private httpClient: HttpClient) { }
 
   getReviews():
   Observable<Review[]>{
-    const searchUrl = `${this.baseUrl}/?productId=${this.prodID}`
+    const searchUrl = `${this.getAllReviews}/?productId=${this.prodID}`
     return this.httpClient.get<GetResponseReviews>(searchUrl).pipe(
       map(response => response._embedded.reviews)
     );
   }
 
-  addReview(prod:Product){
-    // get the user Id 
-
-
+ 
+  addReview(prod:string , body :Object){
+    this.httpClient.post<Review>(this.postReview ,body ).subscribe(data => alert( "Review was submitted at" +data.reviewCreated));
+    alert("Please Click to continue")
+    
   }
 
   setProdId(prodId:number){
@@ -41,3 +45,5 @@ interface GetResponseReviews {
     reviews : Review[];
   };
 }
+
+

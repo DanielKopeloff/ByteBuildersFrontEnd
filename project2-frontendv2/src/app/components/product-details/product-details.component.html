@@ -6,7 +6,7 @@
       </div>
       <div class="product-details col-md-6">
         <div class="title">{{product.description | titlecase}}</div>
-        <div class="text mt-5">Rating - {{product.rating}} / 5</div>
+        <div class="text mt-5">Rating: {{product.rating}} / 5</div>
         <div class="text mt-5">{{product.price | currency: 'USD'}}</div>
         <div class="text mt-5">SKU#: {{ product.sku }}</div>
         <div class="text mt-5" *ngIf="product.stock === 0; else in_stock">Available: Out of Stock</div>

@@ -9,7 +9,10 @@ import {map} from 'rxjs/operators';
 })
 export class ByteUserService {
 
+  prodId :string;
+
   private baseUrl = 'http://localhost:8080/api/byte-user';
+  private users = 'http://localhost:8080/api/byte-user/search/reviewUsers?productId=';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -18,6 +21,17 @@ export class ByteUserService {
       map(response => response._embedded.byteUsers)
     );
   }
+
+  getUsers():Observable<ByteUser[]>{
+    const searchUrl = `${this.users}${this.prodId}`
+    return this.httpClient.get<GetResponse>(searchUrl).pipe(
+      map(response => response._embedded.byteUsers)
+    );
+  }
+
+  setProdId(prodId:string){
+    this.prodId=prodId;
+  }
 }
 
 interface GetResponse {
@@ -25,5 +39,7 @@ interface GetResponse {
     byteUsers: ByteUser[];
   };
 }
+
+
 
 

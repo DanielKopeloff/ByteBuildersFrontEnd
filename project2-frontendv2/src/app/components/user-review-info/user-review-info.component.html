@@ -1,0 +1,9 @@
+<table class="table">
+  <tbody>
+    <tr *ngFor="let user of users;let i = index" style="background-color: blue;" class="{{i}} col-sm-2">
+      <img src={{user.profilePic}} alt="" style="height: 50px;">
+      <a class="mt-2" style="display: block;">{{user.username}}</a>
+    </tr>
+  </tbody>
+</table>
+
