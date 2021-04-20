@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ByteBuilderFormService} from "../../services/byte-builder-form.service";
 import {State} from "../../common/state";
 import {ByteBuilderValidator} from "../../validators/byte-builder-validator";
+import {CartService} from "../../services/cart.service";
 
 @Component({
   selector: 'app-checkout',
@@ -22,10 +23,13 @@ export class CheckoutComponent implements OnInit {
   pageSize = 50;
 
   constructor(private formBuilder: FormBuilder,
+              private cartService: CartService,
               private byteBuilderService: ByteBuilderFormService) {
   }
 
   ngOnInit(): void {
+
+    this.reviewCartDetails();
 
     this.checkoutFormGroup = this.formBuilder.group({
       byteUser: this.formBuilder.group({
@@ -159,5 +163,14 @@ export class CheckoutComponent implements OnInit {
       this.states = data._embedded.states;
       this.pageSize = data.page.size;
     };
+  }
+
+  private reviewCartDetails() {
+    this.cartService.totalQuantity.subscribe(
+      totalQuantity => this.totalQuantity = totalQuantity
+    );
+    this.cartService.totalPrice.subscribe(
+      totalPrice => this.totalPrice = totalPrice
+    );
   }
 }
