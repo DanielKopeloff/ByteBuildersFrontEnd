@@ -21,6 +21,8 @@ import { AddReviewComponent } from './components/add-review/add-review.component
 import { ReviewListComponent } from './components/review-list/review-list.component';
 import { UserReviewInfoComponent } from './components/user-review-info/user-review-info.component';
 import { ReviewDetailsComponent } from './components/review-details/review-details.component';
+import {CheckoutComponent} from "./components/checkout/checkout.component";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -59,8 +61,8 @@ const routes: Routes = [
     AddReviewComponent,
     ReviewListComponent,
     UserReviewInfoComponent,
-    ReviewDetailsComponent
-
+    ReviewDetailsComponent,
+    CheckoutComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
