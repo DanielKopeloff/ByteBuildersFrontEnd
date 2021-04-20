@@ -12,7 +12,7 @@
                   <div class="product-content">
                     <a href="#"><img src="{{product.picture}}" alt="" class="img-responsive" height="100"/></a>
                     <div class="itemDescriber my-2 mx-auto">
-                      <a href="#"><h5>{{product.description | titlecase}}</h5></a>
+                      <a href="#"><h5>{{product.description | slice: 0:20| titlecase}}...</h5></a>
                       <h5 class="mb-2">{{product.price | currency:'USD'}}</h5>
                       <button (click)="addToCart(product)" class="btn btn-primary mt-2 mb-5">Add to cart</button>
                     </div>
@@ -34,7 +34,7 @@
                   <div class="product-content">
                     <a href="#"><img src="{{product.picture}}" alt="" class="img-responsive" height="100"/></a>
                     <div class="itemDescriber my-2 mx-auto">
-                      <a href="#"><h5>{{product.description | titlecase}}</h5></a>
+                      <a href="#"><h5>{{product.description | slice: 0:20| titlecase}}...</h5></a>
                       <h5>{{product.price | currency:'USD'}}</h5>
                       <button (click)="addToCart(product)" class="btn btn-primary mt-2 mb-5">Add to cart</button>
                     </div>

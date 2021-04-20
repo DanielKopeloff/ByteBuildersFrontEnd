@@ -15,7 +15,7 @@
               </a>
               <div class="my-2 mx-auto">
                 <h5><a routerLink="/products/{{product.id}}">
-                  {{product.description | titlecase}}
+                  {{product.description | slice: 0:20| titlecase }}...
                 </a></h5>
                 <h6>{{product.price | currency:'USD'}}</h6>
                 <a (click)="addToCart(product)" class="primary-btn">Add to cart</a>

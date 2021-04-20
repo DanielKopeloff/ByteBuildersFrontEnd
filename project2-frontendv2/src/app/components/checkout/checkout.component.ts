@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {ByteBuilderFormService} from "../../services/byte-builder-form.service";
+import {State} from "../../common/state";
 
 @Component({
   selector: 'app-checkout',
@@ -12,16 +14,25 @@ export class CheckoutComponent implements OnInit {
   totalPrice = 0;
   totalQuantity = 0;
 
-  constructor(private formBuilder: FormBuilder) {
+  creditCardYears: number[] = [];
+  creditCardMonths: number[] = [];
+
+  states: State[] = [];
+  pageSize = 50;
+
+  constructor(private formBuilder: FormBuilder,
+              private byteBuilderService: ByteBuilderFormService) {
   }
 
   ngOnInit(): void {
 
     this.checkoutFormGroup = this.formBuilder.group({
       byteUser: this.formBuilder.group({
-        firstName: [''],
-        lastName: [''],
-        email: ['']
+        firstName: new FormControl('', [Validators.required]),
+        lastName: new FormControl('', [Validators.required]),
+        email: new FormControl(
+          '',
+          [Validators.required, Validators.email])
       }),
       shippingAddress: this.formBuilder.group({
         street: [''],
@@ -45,10 +56,64 @@ export class CheckoutComponent implements OnInit {
       }),
     });
 
+    const startMonth: number = new Date().getMonth() + 1;
+
+    this.byteBuilderService.getCreditCardMonths(startMonth).subscribe(
+      data => {
+        this.creditCardMonths = data;
+      }
+    )
+
+    this.byteBuilderService.getCreditCardYears().subscribe(
+      data => {
+        this.creditCardYears = data;
+      }
+    )
+
+    this.byteBuilderService.getStates(this.pageSize).subscribe(this.processResult());
+
   }
 
   onSubmit() {
-    console.log('Handling the submit button');
-    console.log(this.checkoutFormGroup.get('byteUser').value);
+    if (this.checkoutFormGroup.invalid) {
+      this.checkoutFormGroup.markAllAsTouched();
+    }
+  }
+
+  handleMonthsAndYears() {
+    const creditCardFormGroup = this.checkoutFormGroup.get('creditCard');
+    const currentYear: number = new Date().getFullYear();
+    const selectedYear: number = Number(creditCardFormGroup.value.expirationYear);
+
+    let startMonth: number;
+
+    if (currentYear === selectedYear) {
+      startMonth = new Date().getMonth() + 1;
+    } else {
+      startMonth = 1;
+    }
+
+    this.byteBuilderService.getCreditCardMonths(startMonth).subscribe(
+      data => {
+        this.creditCardMonths = data;
+      }
+    );
+  }
+
+  get firstName() {
+    return this.checkoutFormGroup.get('byteUser.firstName');
+  }
+  get lastName () {
+    return this.checkoutFormGroup.get('byteUser.lastName');
+  }
+  get email() {
+    return this.checkoutFormGroup.get('byteUser.email');
+  }
+
+  processResult() {
+    return data => {
+      this.states = data._embedded.states;
+      this.pageSize = data.page.size;
+    };
   }
 }

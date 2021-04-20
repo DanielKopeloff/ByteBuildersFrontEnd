@@ -6,13 +6,24 @@
           <h3 class="display-4 text-center mt-5 mb-5">Customer Information</h3>
           <div class="row my-4">
             <div class="col-md-11"><h5><label for="input-lg-first-name">First Name:</label></h5></div>
+              <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="form-validation-alert alert alert-danger ">
+                <div *ngIf="firstName.errors.required">
+                  First Name is required.
+                </div>
+              </div>
             <div class="input-group">
               <input id="input-lg-first-name" class="form-control input-lg input-lg" type="text"
-                     formControlName="firstName">
+                     formControlName="firstName" required>
             </div>
           </div>
           <div class="row my-4">
             <div class="col-md-11"><h5><label for="input-lg-last-name">Last Name:</label></h5></div>
+            <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="form-validation-alert alert alert-danger ">
+              <div *ngIf="lastName.errors.required">
+                Last Name is required.
+              </div>
+
+            </div>
             <div class="input-group">
               <input id="input-lg-last-name" class="form-control input-lg input-lg" type="text"
                      formControlName="lastName">
@@ -20,6 +31,14 @@
           </div>
           <div class="row my-4">
             <div class="col-md-11"><h5><label for="input-lg-email">Email:</label></h5></div>
+            <div *ngIf="email.invalid && email.touched" class="form-validation-alert alert alert-danger ">
+              <div *ngIf="email.errors.required">
+                Email is required.
+              </div>
+              <div *ngIf="email.errors.email">
+                Invalid email format
+              </div>
+            </div>
             <div class="input-group">
               <input id="input-lg-email" class="form-control input-lg input-lg" type="email" formControlName="email">
             </div>
@@ -47,7 +66,7 @@
             <div class="input-group">
               <select id="input-lg-shipping-state" class="form-control input-lg input-lg" type="text"
                       formControlName="state">
-                <option value="">TO DO</option>
+                <option *ngFor="let state of states" [ngValue]="state">{{ state.stateName | uppercase}}</option>
               </select>
             </div>
           </div>
@@ -81,7 +100,7 @@
             <div class="input-group">
               <select id="input-lg-billing-state" class="form-control input-lg input-lg" type="text"
                       formControlName="state">
-                <option value="">TO DO</option>
+                <option *ngFor="let state of states" [ngValue]="state">{{ state.stateName | uppercase}}</option>
               </select>
             </div>
           </div>
@@ -135,13 +154,13 @@
             <div class="col-md-4 input-group">
               <select id="credit-card-expiration-month" class="form-control"
                       formControlName="expirationMonth">
-                <option value="">TO DO</option>
+                <option *ngFor="let month of creditCardMonths">{{ month }}</option>
               </select>
             </div>
             <div class="col-md-4 input-group">
               <select id="credit-card-expiration-year" class="form-control"
-                      formControlName="expirationYear">
-                <option value="">TO DO</option>
+                      formControlName="expirationYear" (change)="handleMonthsAndYears()">
+                <option *ngFor="let year of creditCardYears">{{ year }}</option>
               </select>
             </div>
           </div>
