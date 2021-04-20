@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ByteBuilderFormService} from "../../services/byte-builder-form.service";
-import {State} from "../../common/state";
+
 import {ByteBuilderValidator} from "../../validators/byte-builder-validator";
 import {CartService} from "../../services/cart.service";
+import {State} from "../../common/state";
 
 @Component({
   selector: 'app-checkout',
@@ -25,6 +26,66 @@ export class CheckoutComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private cartService: CartService,
               private byteBuilderService: ByteBuilderFormService) {
+  }
+
+  get firstName() {
+    return this.checkoutFormGroup.get('byteUser.firstName');
+  }
+
+  get lastName() {
+    return this.checkoutFormGroup.get('byteUser.lastName');
+  }
+
+  get email() {
+    return this.checkoutFormGroup.get('byteUser.email');
+  }
+
+  get shippingAddressStreet() {
+    return this.checkoutFormGroup.get('shippingAddress.street');
+  }
+
+  get shippingAddressCity() {
+    return this.checkoutFormGroup.get('shippingAddress.city');
+  }
+
+  get shippingAddressState() {
+    return this.checkoutFormGroup.get('shippingAddress.state');
+  }
+
+  get shippingAddressZipCode() {
+    return this.checkoutFormGroup.get('shippingAddress.zipCode');
+  }
+
+  get billingAddressStreet() {
+    return this.checkoutFormGroup.get('billingAddress.street');
+  }
+
+  get billingAddressCity() {
+    return this.checkoutFormGroup.get('billingAddress.city');
+  }
+
+  get billingAddressState() {
+    return this.checkoutFormGroup.get('billingAddress.state');
+  }
+
+  get billingAddressZipCode() {
+    return this.checkoutFormGroup.get('billingAddress.zipCode');
+  }
+
+  get creditCardType() {
+    return this.checkoutFormGroup.get('creditCard.cardType');
+  }
+
+  get creditCardName() {
+    return this.checkoutFormGroup.get('creditCard.nameOnCard');
+  }
+
+  get creditCardNumber() {
+    return this.checkoutFormGroup.get('creditCard.cardNumber');
+  }
+
+  get creditCardSecurityCode() {
+    return this.checkoutFormGroup.get('creditCard.securityCode');
   }
 
   ngOnInit(): void {
@@ -101,61 +162,6 @@ export class CheckoutComponent implements OnInit {
         this.creditCardMonths = data;
       }
     );
-  }
-
-  get firstName() {
-    return this.checkoutFormGroup.get('byteUser.firstName');
-  }
-  get lastName () {
-    return this.checkoutFormGroup.get('byteUser.lastName');
-  }
-  get email() {
-    return this.checkoutFormGroup.get('byteUser.email');
-  }
-
-  get shippingAddressStreet() {
-    return this.checkoutFormGroup.get('shippingAddress.street');
-  }
-  get shippingAddressCity() {
-    return this.checkoutFormGroup.get('shippingAddress.city');
-  }
-  get shippingAddressState() {
-    return this.checkoutFormGroup.get('shippingAddress.state');
-  }
-  get shippingAddressZipCode() {
-    return this.checkoutFormGroup.get('shippingAddress.zipCode');
-  }
-
-  get  billingAddressStreet() {
-    return this.checkoutFormGroup.get('billingAddress.street');
-  }
-  get billingAddressCity() {
-    return this.checkoutFormGroup.get('billingAddress.city');
-  }
-  get billingAddressState() {
-    return this.checkoutFormGroup.get('billingAddress.state');
-  }
-  get billingAddressZipCode() {
-    return this.checkoutFormGroup.get('billingAddress.zipCode');
-  }
-
-  get creditCardType() {
-    return this.checkoutFormGroup.get('creditCard.cardType');
-  }
-  get creditCardName() {
-    return this.checkoutFormGroup.get('creditCard.nameOnCard');
-  }
-  get creditCardNumber() {
-    return this.checkoutFormGroup.get('creditCard.cardNumber');
-  }
-  get creditCardSecurityCode() {
-    return this.checkoutFormGroup.get('creditCard.securityCode');
-  }
-  get creditCardExpirationMonth() {
-    return this.checkoutFormGroup.get('creditCard.expirationMonth');
-  }
-  get creditCardExpirationYear() {
-    return this.checkoutFormGroup.get('creditCard.expirationYear');
   }
 
   processResult() {
