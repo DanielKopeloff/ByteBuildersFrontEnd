@@ -99,7 +99,7 @@ export class ProductListComponent implements OnInit {
       this.products = data._embedded.products;
       this.pageNumber = data.page.number + 1;
       this.pageSize = data.page.size;
-      this.totalElements = data = data.page.totalElements;
+      this.totalElements = data.page.totalElements;
     };
   }
 
@@ -110,7 +110,7 @@ export class ProductListComponent implements OnInit {
     this.listProducts();
   }
 
-  
+
   addToCart(tempProduct: Product){
    // console.log(`Adding to cart ${tempProduct.description} , ${tempProduct.price}`);
 

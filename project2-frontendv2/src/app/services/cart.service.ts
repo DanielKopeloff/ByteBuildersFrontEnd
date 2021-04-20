@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {Product} from '../common/product';
 import {map} from 'rxjs/operators';
-import {Observable, Subject} from 'rxjs';
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import { CartItem } from '../common/cart-item';
 
 
@@ -10,22 +10,21 @@ import { CartItem } from '../common/cart-item';
   providedIn: 'root'
 })
 export class CartService {
-  
+
 
   private baseUrl = "http://localhost:8080/api/product/search/cart";
   cartItems:CartItem[] = [];
-  
-  
-  totalPrice : Subject<number> = new Subject<number>();
-  
-  totalQuantity : Subject<number> = new Subject<number>();
+
+
+  totalPrice : Subject<number> = new BehaviorSubject<number>(0);
+  totalQuantity : Subject<number> = new BehaviorSubject<number>(0);
 
   constructor(private httpClient: HttpClient) { }
 
   getCart(userID : number):
   Observable<Product[]>{
-    //const searchUrl = `${this.baseUrl}/?userId=${userID}`
-    const searchUrl = `${this.baseUrl}/?userId=8`
+    const searchUrl = `${this.baseUrl}/?userId=${userID}`
+    // const searchUrl = `${this.baseUrl}/?userId=8`
     return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(
       map(response => response._embedded.products)
     );
@@ -34,15 +33,15 @@ export class CartService {
   /**
    * Check if we already have the item in the Cart
    * find the item in the cart based on item id
-   * @param thecartItem 
-   * 
+   * @param thecartItem
+   *
    */
   addToCart(theCartItem:CartItem){
     let alreadyExistsInCart : boolean;
     let existingCartItem: CartItem = undefined;
 
     if(this.cartItems.length > 0){
-      
+
       existingCartItem = this.cartItems.find( temp =>  temp.id === theCartItem.id);
 
         alreadyExistsInCart = (existingCartItem!=undefined);
@@ -57,7 +56,7 @@ export class CartService {
 
     this.computeCartTotals();
 
-  
+
   }
   computeCartTotals() {
     let totalSum:number = 0;
@@ -65,13 +64,13 @@ export class CartService {
     for(let tempCartItem of this.cartItems){
         totalSum += tempCartItem.unitPrice * tempCartItem.quantity;
         totalQuantity += tempCartItem.quantity;
-    }; 
+    };
     this.totalPrice.next(totalSum);
     this.totalQuantity.next(totalQuantity);
 
-    //log cart data just for debugging 
+    //log cart data just for debugging
     //this.logCartData(totalQuantity , totalSum);
-  
+
   }
   logCartData(totalQuantity: number, totalSum: number) {
   console.log("contents of the cart");
@@ -90,7 +89,7 @@ export class CartService {
     let existingCartItem: CartItem = undefined;
 
     if(this.cartItems.length > 0){
-      
+
       existingCartItem = this.cartItems.find( temp =>  temp.id === theCartItem.id);
 
         alreadyExistsInCart = (existingCartItem!=undefined);
@@ -102,7 +101,7 @@ export class CartService {
          this.remove(existingCartItem);
       }
     }
-  
+
 
     this.computeCartTotals();
   }
@@ -113,7 +112,7 @@ export class CartService {
       this.cartItems.splice(itemIndex ,1);
       this.computeCartTotals();
     }
-  }  
+  }
 
 }
 
