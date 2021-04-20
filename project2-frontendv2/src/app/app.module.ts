@@ -27,6 +27,7 @@ import { ReviewDetailsComponent } from './components/review-details/review-detai
 
 
 const routes: Routes = [
+  {path: 'checkout', component: CheckoutComponent},
   {path: 'products/:id', component: ProductDetailsComponent},
   {path: 'search/:keyword', component: ProductListComponent},
   {path: 'category/:id/:name', component: ProductListComponent},
@@ -59,13 +60,14 @@ const routes: Routes = [
     ReviewListComponent,
     UserReviewInfoComponent,
     ReviewDetailsComponent
+
   ],
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
     HttpClientModule,
-    NgbModule
-    
+    NgbModule,
+    ReactiveFormsModule
   ],
   providers: [
     ProductService,

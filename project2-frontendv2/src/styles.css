@@ -33,3 +33,17 @@ footer {
   text-align: center;
   padding: 2%;
 }
+
+.checkout-forms {
+  width: 50%;
+  margin: auto;
+}
+
+.checkout-forms button {
+  width: 50%;
+  margin-left: 25%;
+}
+
+.checkout-forms input {
+  border-radius: 10px;
+}
