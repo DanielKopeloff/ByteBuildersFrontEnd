@@ -1,0 +1,11 @@
+.users{
+  display: inline-block;
+  text-align: left;
+  background-color: red;
+}
+
+.reviews{
+  display: inline-block;
+  text-align: left;
+  background-color: yellow;
+}

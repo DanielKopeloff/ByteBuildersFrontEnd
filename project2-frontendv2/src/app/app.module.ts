@@ -17,8 +17,11 @@ import {LoginComponent} from './components/login/login.component';
 import {CartComponent} from './components/cart/cart.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {CartStatusComponent} from './components/cart-status/cart-status.component';
-import { CheckoutComponent } from './components/checkout/checkout.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { AddReviewComponent } from './components/add-review/add-review.component';
+import { ReviewListComponent } from './components/review-list/review-list.component';
+import { UserReviewInfoComponent } from './components/user-review-info/user-review-info.component';
+import { ReviewDetailsComponent } from './components/review-details/review-details.component';
+
 
 
 
@@ -53,7 +56,11 @@ const routes: Routes = [
     LoginComponent,
     CartComponent,
     CartStatusComponent,
-    CheckoutComponent
+    AddReviewComponent,
+    ReviewListComponent,
+    UserReviewInfoComponent,
+    ReviewDetailsComponent
+
   ],
   imports: [
     RouterModule.forRoot(routes),

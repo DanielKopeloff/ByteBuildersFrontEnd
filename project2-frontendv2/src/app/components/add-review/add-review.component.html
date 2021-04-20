@@ -1,0 +1,17 @@
+
+<div class="container-fluid">
+  <form class="form-inline mt-3" style="text-align: center;">
+ 
+    <input type="number" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Rating" min="1" max = "5" #rating>
+    <label class="sr-only" for="inlineFormInputName2">Rating</label>
+  
+    <label class="sr-only" for="inlineFormInputGroupUsername2">Review</label>
+    <div class="input-group mb-2 mr-sm-2">
+      <div class="input-group-prepend">
+      </div>
+      <input type="text" class="form-control col-lg" id="inlineFormInputGroupUsername2" placeholder="Review" style="width: 800px;" #comment>
+    </div>
+  
+    <button type="submit" (click)="onSubmit($event)"  class="btn btn-primary mb-2 float-right" >Submit</button>
+  </form>
+</div>
