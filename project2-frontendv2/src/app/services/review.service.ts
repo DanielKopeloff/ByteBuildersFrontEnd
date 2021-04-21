@@ -17,7 +17,9 @@ export class ReviewService {
   private postReview = 'http://localhost:8080/api/review';
 
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+    console.log("This is the hitting"  + this.getReviews())
+   }
 
   getReviews():
   Observable<Review[]>{
@@ -29,7 +31,7 @@ export class ReviewService {
 
  
   addReview(prod:string , body :Object){
-    this.httpClient.post<Review>(this.postReview ,body ).subscribe(data => alert( "Review was submitted at" +data.reviewCreated));
+    this.httpClient.post<Review>(this.postReview ,body ).subscribe(data => alert( "Review was submitted at - " +data.reviewCreated));
     alert("Please Click to continue")
     
   }

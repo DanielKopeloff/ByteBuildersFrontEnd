@@ -28,11 +28,11 @@ export class CartComponent implements OnInit {
     this.products = this.cartService.cartItems;
 
     this.cartService.totalPrice.subscribe(
-      data=> this.totalPrice = data
+      data => this.totalPrice = data
     );
 
     this.cartService.totalQuantity.subscribe(
-      data=> this.totalQuantity = data
+      data => this.totalQuantity = data
     );
 
 
@@ -65,7 +65,14 @@ export class CartComponent implements OnInit {
   }
 
   incrementQuantity(cartItem:CartItem ){
+  
+    if(cartItem.quantity ===  cartItem.stock){
+      return
+    }
+    else{
       this.cartService.addToCart(cartItem);
+    }
+     
 
   }
 

@@ -80,7 +80,7 @@
             <div class="input-group">
               <select id="input-lg-shipping-state" class="form-control input-lg input-lg" type="text"
                       formControlName="state">
-                <option *ngFor="let state of states" [ngValue]="state">{{ state.stateName | uppercase}}</option>
+                <option *ngFor="let state of stateArr" [ngValue]="state">{{ state | uppercase}}</option>
               </select>
             </div>
           </div>
@@ -134,7 +134,7 @@
             <div class="input-group">
               <select id="input-lg-billing-state" class="form-control input-lg input-lg" type="text"
                       formControlName="state">
-                <option *ngFor="let state of states" [ngValue]="state">{{ state.stateName | uppercase}}</option>
+                <option *ngFor="let state of stateArr" [ngValue]="state" > {{state | uppercase}}</option>
               </select>
             </div>
           </div>

@@ -5,7 +5,8 @@ import { ReviewService } from 'src/app/services/review.service';
 @Component({
   selector: 'app-add-review',
   templateUrl: './add-review.component.html',
-  styleUrls: ['./add-review.component.css']
+  styleUrls: ['./add-review.component.css'] , 
+
 })
 export class AddReviewComponent implements OnInit {
 
@@ -17,6 +18,12 @@ export class AddReviewComponent implements OnInit {
     userId : number;
     prodId : number;
 
+    wrongRating : boolean = false;
+
+    wrongComment : boolean = false;
+
+
+
     submitted= false;
   constructor(private reviewService:ReviewService , private activatedRoute:ActivatedRoute) { }
 
@@ -26,9 +33,19 @@ export class AddReviewComponent implements OnInit {
   onSubmit(event:any){
     this.submitted = true;
      
+
+
+    let comment = this.commentElement.nativeElement.value;
+    if(comment === ""){
+      return;
+    }
+    let rating = this.ratingElement.nativeElement.value;
+    if(rating <= 0 || rating > 5){
+      return;
+    }
       
      const body ={
-    "comment":`${this.commentElement.nativeElement.value}`,
+    "comment":`${comment}`,
       "rating":`${this.ratingElement.nativeElement.value}`,
       "byteOrder":"http://localhost:8080/api/byte-order/1"
     }
