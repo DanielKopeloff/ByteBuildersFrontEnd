@@ -7,7 +7,8 @@
           <thead>
           <tr>
             <th scope="col">#</th>
-            <th colspan="2" headers="Item">Item</th>
+            <th scope="col"></th>
+            <th scope="col">Item</th>
             <th scope="col">Stock</th>
             <th scope="col">Unit Price</th>
             <th scope="col">Quantity</th>
@@ -26,13 +27,13 @@
             <td>
               <div class="items">
                 <div class="row no-gutters">
-                  <div class="col">
+                  <div class="col-md-2 ml-2">
                     <button (click)="incrementQuantity(cartItem)" class="btn btn-primary btn-sm">
                       <i class="fa fa-plus"></i>
                     </button>
                   </div>
-                  <div class="item-quantity-in-cart col-2 ml-4 mr-2">{{cartItem.quantity}}</div>
-                  <div class="col">
+                  <div class="item-quantity-in-cart col-md-2 mr-1 ml-3"><strong>{{cartItem.quantity}}</strong></div>
+                  <div class="col-md-2">
                     <button (click)="decrementQuantity(cartItem)" class="btn btn-primary btn-sm">
                       <i class="fa fa-minus"></i>
                     </button>
@@ -61,6 +62,7 @@
           </tbody>
         </table>
       </div>
+      <button routerLink="/checkout">Checkout</button>
 
       <div *ngIf="products.length === 0" class="alert alert-warning col-md-12" role="alert">Your Shopping Cart is
         Empty

@@ -12,6 +12,8 @@ export class ProductService {
 
   private baseUrl = 'http://localhost:8080/api/product';
   private categoryUrl = 'http://localhost:8080/api/category';
+  private hotUrl = 'http://localhost:8080/api/product/search/hotItems';
+  private newItemsUrl = 'http://localhost:8080/api/product/search/newItems';
 
   constructor(private httpClient: HttpClient) {
   }
@@ -26,9 +28,16 @@ export class ProductService {
     return this.getProducts(searchUrl);
   }
 
-  getAllProductList(): Observable<Product[]> {
+  getHotProductList(): Observable<Product[]> {
 
-    return this.httpClient.get<GetResponseProducts>(this.baseUrl).pipe(
+    return this.httpClient.get<GetResponseProducts>(this.hotUrl).pipe(
+      map(response => response._embedded.products)
+    );
+  }
+
+  getNewProductList(): Observable<Product[]> {
+
+    return this.httpClient.get<GetResponseProducts>(this.newItemsUrl).pipe(
       map(response => response._embedded.products)
     );
   }
@@ -40,12 +49,12 @@ export class ProductService {
   }
 
   searchProducts(keyword: string): Observable<Product[]> {
-    const searchUrl = `${this.baseUrl}/search/findByDescriptionContaining?name=${keyword}`;
+    const searchUrl = `${this.baseUrl}/search/findByDescriptionContainingIgnoreCase?name=${keyword}`;
     return this.getProducts(searchUrl);
   }
 
   searchProductsPaginate(page: number, pageSize: number, keyword: string): Observable<GetResponseProducts> {
-    const searchUrl = `${this.baseUrl}/search/findByDescriptionContaining?name=${keyword}&page=${page}&size=${pageSize}`;
+    const searchUrl = `${this.baseUrl}/search/findByDescriptionContainingIgnoreCase?name=${keyword}&page=${page}&size=${pageSize}`;
     return this.httpClient.get<GetResponseProducts>(searchUrl);
   }
 

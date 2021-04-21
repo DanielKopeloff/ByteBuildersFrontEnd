@@ -6,13 +6,23 @@
           <h3 class="display-4 text-center mt-5 mb-5">Customer Information</h3>
           <div class="row my-4">
             <div class="col-md-11"><h5><label for="input-lg-first-name">First Name:</label></h5></div>
+              <div *ngIf="firstName.invalid && firstName.touched" class="form-validation-alert alert alert-danger ">
+                <div *ngIf="firstName.errors.required || lastName.errors.noWhiteSpace">
+                  First Name is required.
+                </div>
+              </div>
             <div class="input-group">
               <input id="input-lg-first-name" class="form-control input-lg input-lg" type="text"
-                     formControlName="firstName">
+                     formControlName="firstName" required>
             </div>
           </div>
           <div class="row my-4">
             <div class="col-md-11"><h5><label for="input-lg-last-name">Last Name:</label></h5></div>
+            <div *ngIf="lastName.invalid && lastName.touched" class="form-validation-alert alert alert-danger ">
+              <div *ngIf="lastName.errors.required || lastName.errors.noWhiteSpace">
+                Last Name is required.
+              </div>
+            </div>
             <div class="input-group">
               <input id="input-lg-last-name" class="form-control input-lg input-lg" type="text"
                      formControlName="lastName">
@@ -20,6 +30,14 @@
           </div>
           <div class="row my-4">
             <div class="col-md-11"><h5><label for="input-lg-email">Email:</label></h5></div>
+            <div *ngIf="email.invalid && email.touched" class="form-validation-alert alert alert-danger ">
+              <div *ngIf="email.errors.required">
+                Email is required.
+              </div>
+              <div *ngIf="email.errors.email">
+                Invalid email format
+              </div>
+            </div>
             <div class="input-group">
               <input id="input-lg-email" class="form-control input-lg input-lg" type="email" formControlName="email">
             </div>
@@ -30,6 +48,11 @@
           <h3 class="display-4 text-center mt-5 mb-5">Shipping Address</h3>
           <div class="row my-4">
             <div class="col-md-11"><h5><label for="shipping-street">Street Name:</label></h5></div>
+            <div *ngIf="shippingAddressStreet.invalid && shippingAddressStreet.touched" class="form-validation-alert alert alert-danger ">
+              <div *ngIf="shippingAddressStreet.errors.required || shippingAddressStreet.errors.noWhiteSpace">
+                Street is required.
+              </div>
+            </div>
             <div class="input-group">
               <input id="shipping-street" class="form-control input-lg input-lg" type="text"
                      formControlName="street">
@@ -37,6 +60,11 @@
           </div>
           <div class="row my-4">
             <div class="col-md-11"><h5><label for="input-lg-shipping-city">City:</label></h5></div>
+            <div *ngIf="shippingAddressCity.invalid && shippingAddressCity.touched" class="form-validation-alert alert alert-danger ">
+              <div *ngIf="shippingAddressCity.errors.required || shippingAddressCity.errors.noWhiteSpace">
+                City is required.
+              </div>
+            </div>
             <div class="input-group">
               <input id="input-lg-shipping-city" class="form-control input-lg input-lg" type="text"
                      formControlName="city">
@@ -44,26 +72,41 @@
           </div>
           <div class="row my-4">
             <div class="col-md-11"><h5><label for="input-lg-shipping-state">State:</label></h5></div>
+            <div *ngIf="shippingAddressState.invalid && shippingAddressState.touched" class="form-validation-alert alert alert-danger">
+              <div *ngIf="shippingAddressState.errors.required">
+                State is required.
+              </div>
+            </div>
             <div class="input-group">
               <select id="input-lg-shipping-state" class="form-control input-lg input-lg" type="text"
                       formControlName="state">
-                <option value="">TO DO</option>
+                <option *ngFor="let state of states" [ngValue]="state">{{ state.stateName | uppercase}}</option>
               </select>
             </div>
           </div>
           <div class="row my-4">
             <div class="col-md-11"><h5><label for="input-lg-shipping-zip-code">Zip Code:</label></h5></div>
+            <div *ngIf="shippingAddressZipCode.invalid && shippingAddressZipCode.touched" class="form-validation-alert alert alert-danger ">
+              <div *ngIf="shippingAddressZipCode.errors.required || shippingAddressZipCode.errors.noWhiteSpace">
+                Zip Code is required.
+              </div>
+            </div>
             <div class="input-group">
-              <input id="input-lg-shipping-zip-code" class="form-control input-lg input-lg" type="email"
+              <input id="input-lg-shipping-zip-code" class="form-control input-lg input-lg" type="text"
                      formControlName="zipCode">
             </div>
           </div>
         </div>
 
-        <div formGroupName="shippingAddress" class="form-group">
+        <div formGroupName="billingAddress" class="form-group">
           <h3 class="display-4 text-center mt-5 mb-5">Billing Address</h3>
           <div class="row my-4">
             <div class="col-md-11"><h5><label for="billing-street">Street Name:</label></h5></div>
+            <div *ngIf="billingAddressStreet.invalid && billingAddressStreet.touched" class="form-validation-alert alert alert-danger ">
+              <div *ngIf="billingAddressStreet.errors.required || billingAddressStreet.errors.noWhiteSpace">
+                Street is required.
+              </div>
+            </div>
             <div class="input-group">
               <input id="billing-street" class="form-control input-lg input-lg" type="text"
                      formControlName="street">
@@ -71,6 +114,11 @@
           </div>
           <div class="row my-4">
             <div class="col-md-11"><h5><label for="input-lg-billing-city">City:</label></h5></div>
+            <div *ngIf="billingAddressCity.invalid && billingAddressCity.touched" class="form-validation-alert alert alert-danger ">
+              <div *ngIf="billingAddressCity.errors.required || billingAddressCity.errors.noWhiteSpace">
+                City is required.
+              </div>
+            </div>
             <div class="input-group">
               <input id="input-lg-billing-city" class="form-control input-lg input-lg" type="text"
                      formControlName="city">
@@ -78,17 +126,27 @@
           </div>
           <div class="row my-4">
             <div class="col-md-11"><h5><label for="input-lg-billing-state">State:</label></h5></div>
+            <div *ngIf="billingAddressState.invalid && billingAddressState.touched" class="form-validation-alert alert alert-danger">
+              <div *ngIf="billingAddressState.errors.required">
+                State is required.
+              </div>
+            </div>
             <div class="input-group">
               <select id="input-lg-billing-state" class="form-control input-lg input-lg" type="text"
                       formControlName="state">
-                <option value="">TO DO</option>
+                <option *ngFor="let state of states" [ngValue]="state">{{ state.stateName | uppercase}}</option>
               </select>
             </div>
           </div>
           <div class="row my-4">
             <div class="col-md-11"><h5><label for="input-lg-billing-zip-code">Zip Code:</label></h5></div>
+            <div *ngIf="billingAddressZipCode.invalid && billingAddressZipCode.touched" class="form-validation-alert alert alert-danger ">
+              <div *ngIf="billingAddressZipCode.errors.required || billingAddressZipCode.errors.noWhiteSpace">
+                Zip Code is required.
+              </div>
+            </div>
             <div class="input-group">
-              <input id="input-lg-billing-zip-code" class="form-control input-lg input-lg" type="email"
+              <input id="input-lg-billing-zip-code" class="form-control input-lg input-lg" type="text"
                      formControlName="zipCode">
             </div>
           </div>
@@ -96,6 +154,11 @@
 
         <div formGroupName="creditCard" class="form-group">
           <h3 class="display-4 text-center mt-5 mb-5">Credit Card Information</h3>
+          <div *ngIf="creditCardName.invalid && creditCardName.touched" class="form-validation-alert alert alert-danger ">
+            <div *ngIf="creditCardName.errors.required">
+              Name on Card required
+            </div>
+          </div>
           <div class="row my-4">
             <div class="col-md-11"><h5><label for="name-on-card">Name on Card:</label></h5></div>
             <div class="input-group">
@@ -105,6 +168,11 @@
           </div>
           <div class="row my-4">
             <div class="col-md-11"><h5><label for="credit-card-type">Credit Card Type:</label></h5></div>
+            <div *ngIf="creditCardType.invalid && creditCardType.touched" class="form-validation-alert alert alert-danger ">
+              <div *ngIf="creditCardType.errors.required">
+                Credit Card Type required.
+              </div>
+            </div>
             <div class="input-group">
               <select id="credit-card-type" class="form-control"
                       formControlName="cardType">
@@ -117,31 +185,47 @@
           </div>
           <div class="row my-4">
             <div class="col-md-11"><h5><label for="credit-card-number">Credit Card #:</label></h5></div>
+            <div *ngIf="creditCardNumber.invalid && creditCardNumber.touched" class="form-validation-alert alert alert-danger ">
+              <div *ngIf="creditCardNumber.errors.required">
+                Credit Card Number required
+              </div>
+              <div *ngIf="creditCardNumber.errors.pattern">
+                Must contain 16 digit credit card number
+              </div>
+            </div>
             <div class="input-group">
-              <input id="credit-card-number" class="form-control input-lg input-lg" type="number"
+              <input id="credit-card-number" class="form-control input-lg input-lg" type="text"
                      formControlName="cardNumber">
             </div>
           </div>
           <div class="row mt-4 text-center">
-            <div class="col-md-4"><h5><label for="credit-card-security-code">Security Code #:</label></h5></div>
+            <div class="col-md-4"><h5><label for="credit-card-security-code">CVC</label></h5></div>
             <div class="col-md-4"><h5><label for="credit-card-expiration-month">Exp Month:</label></h5></div>
             <div class="col-md-4"><h5><label for="credit-card-expiration-year">Exp Year:</label></h5></div>
           </div>
           <div class="row mb-5">
             <div class="col-md-4 input-group">
+              <div *ngIf="creditCardSecurityCode.invalid && creditCardSecurityCode.touched" class="form-validation-alert alert alert-danger ">
+                <div *ngIf="creditCardSecurityCode.errors.required">
+                  Security Code required
+                </div>
+                <div *ngIf="creditCardSecurityCode.errors.pattern">
+                  Please enter the 3 digit security code on the back of your card
+                </div>
+              </div>
               <input id="credit-card-security-code" class="form-control input-lg input-lg" type="text"
                      formControlName="securityCode">
             </div>
             <div class="col-md-4 input-group">
               <select id="credit-card-expiration-month" class="form-control"
                       formControlName="expirationMonth">
-                <option value="">TO DO</option>
+                <option *ngFor="let month of creditCardMonths">{{ month }}</option>
               </select>
             </div>
             <div class="col-md-4 input-group">
               <select id="credit-card-expiration-year" class="form-control"
-                      formControlName="expirationYear">
-                <option value="">TO DO</option>
+                      formControlName="expirationYear" (change)="handleMonthsAndYears()">
+                <option *ngFor="let year of creditCardYears">{{ year }}</option>
               </select>
             </div>
           </div>

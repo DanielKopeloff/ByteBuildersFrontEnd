@@ -13,4 +13,17 @@ img {
 
 .product-details {
   text-align: right;
+  font-size: small;
+}
+
+.text{
+  font-size: 20px;
+}
+
+.title{
+  font-size: 27px;
+}
+
+.reviewBtn{
+  text-align: center;
 }
