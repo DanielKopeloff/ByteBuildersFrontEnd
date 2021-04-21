@@ -20,8 +20,8 @@
             <i class="fa fa-chevron-circle-down fa-2x"></i>
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" routerLink="/login">Login</a></li>
-            <li><a class="dropdown-item" routerLink="/register">Register</a></li>
+            <li><a class="dropdown-item" routerLink="/auth">Login</a></li>
+            <li><a class="dropdown-item" routerLink="/auth">Register</a></li>
             <li>
               <hr class="dropdown-divider">
             </li>
@@ -31,7 +31,7 @@
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" routerLink="/cart">Go to Cart</a></li>
+            <li><a class="dropdown-item" routerLink="/cart" *ngIf="isAuthenticated">Go to Cart</a></li>
             <li><a class="dropdown-item" routerLink="/">Find item</a></li>
             <li>
               <hr class="dropdown-divider">
@@ -47,11 +47,13 @@
       </a>
     </div>
     <div>
-      <a href="/login">
+      <a href="/auth">
         <i class="fa fa-user fa-2x mr-1"></i>
       </a>
+
+      <a style="cursor: pointer; color:white;" (click)="onLogout()">Logout</a>
     </div>
-    <div class="mx-2">
+    <div class="mx-2" *ngIf="isAuthenticated">
       <app-cart-status></app-cart-status>
     </div>
   </div>
