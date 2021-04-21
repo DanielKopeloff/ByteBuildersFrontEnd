@@ -25,8 +25,7 @@ import { ReviewDetailsComponent } from './components/review-details/review-detai
 import {CheckoutComponent} from "./components/checkout/checkout.component";
 import {ReactiveFormsModule} from "@angular/forms";
 
-import { CheckoutComponent } from './components/checkout/checkout.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { AuthComponent } from './components/auth/auth.component';
 import { LoadingSpinnerComponent } from 'src/assets/loading-spinner/loading-spinner.component';
 
@@ -68,7 +67,7 @@ const routes: Routes = [
     ReviewListComponent,
     UserReviewInfoComponent,
     ReviewDetailsComponent,
-    CheckoutComponent
+    CheckoutComponent ,
     AuthComponent,
     LoadingSpinnerComponent
 
