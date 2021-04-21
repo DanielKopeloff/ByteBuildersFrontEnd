@@ -4,7 +4,8 @@ import {ByteBuilderFormService} from "../../services/byte-builder-form.service";
 
 import {ByteBuilderValidator} from "../../validators/byte-builder-validator";
 import {CartService} from "../../services/cart.service";
-import {State} from "../../common/state";
+import { State } from 'src/app/common/state';
+
 
 @Component({
   selector: 'app-checkout',
