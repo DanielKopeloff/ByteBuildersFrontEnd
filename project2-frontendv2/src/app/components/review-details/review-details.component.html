@@ -1,12 +1,14 @@
 <table class="table mt-2">
   <tbody class="mb-2">
-    <tr *ngFor="let review of reviews;let i = index"  class="{{i}} ">
-      <td class="col-sm-1">
+    <tr *ngFor="let review of reviews;let i = index"  class="{{i}} reviewDetails"  >
+      <td class="col-sm-1 ">
         <a>Rating : {{review.rating}} /5 </a>
       </td>
       <td style="text-align: center;"> <a>{{review.comment}} </a></td>
       <td class="col-sm-1"><a>{{review.reviewCreated |date}}</a>
         </td>
+        <br>
     </tr>
+    
   </tbody>
 </table>

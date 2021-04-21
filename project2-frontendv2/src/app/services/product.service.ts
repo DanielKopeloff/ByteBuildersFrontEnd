@@ -12,6 +12,8 @@ export class ProductService {
 
   private baseUrl = 'http://localhost:8080/api/product';
   private categoryUrl = 'http://localhost:8080/api/category';
+  private hotUrl = 'http://localhost:8080/api/product/search/hotItems';
+  private newItemsUrl = 'http://localhost:8080/api/product/search/newItems';
 
   constructor(private httpClient: HttpClient) {
   }
@@ -26,9 +28,16 @@ export class ProductService {
     return this.getProducts(searchUrl);
   }
 
-  getAllProductList(): Observable<Product[]> {
+  getHotProductList(): Observable<Product[]> {
 
-    return this.httpClient.get<GetResponseProducts>(this.baseUrl).pipe(
+    return this.httpClient.get<GetResponseProducts>(this.hotUrl).pipe(
+      map(response => response._embedded.products)
+    );
+  }
+
+  getNewProductList(): Observable<Product[]> {
+
+    return this.httpClient.get<GetResponseProducts>(this.newItemsUrl).pipe(
       map(response => response._embedded.products)
     );
   }

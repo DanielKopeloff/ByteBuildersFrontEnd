@@ -8,7 +8,7 @@
           <div class="section-content section-content-p30">
             <div class="container-fluid">
               <div class="row">
-                <div *ngFor="let product of products" class="col-md-3 ">
+                <div *ngFor="let product of hotItems" class="col-md-3 ">
                   <div class="product-content">
                     <a routerLink="/products/{{product.id}}"><img src="{{product.picture}}" alt="" class="img-responsive" height="100"/></a>
                     <div class="itemDescriber my-2 mx-auto">
@@ -30,7 +30,7 @@
           <div class="section-content section-content-p30">
             <div class="container-fluid">
               <div class="row">
-                <div *ngFor="let product of products" class="col-md-3 ">
+                <div *ngFor="let product of newItems" class="col-md-3 ">
                   <div class="product-content">
                     <a  routerLink="/products/{{product.id}}"><img src="{{product.picture}}" alt="" class="img-responsive" height="100"/></a>
                     <div class="itemDescriber my-2 mx-auto">

@@ -4,12 +4,16 @@ import {ByteBuilderFormService} from "../../services/byte-builder-form.service";
 
 import {ByteBuilderValidator} from "../../validators/byte-builder-validator";
 import {CartService} from "../../services/cart.service";
+
 import {State} from "../../common/state";
 import {Router} from "@angular/router";
 import {CheckoutService} from "../../services/checkout.service";
 import {ByteOrder} from "../../common/byte-order";
 import {ProductOrder} from "../../common/product-order";
 import {Purchase} from "../../common/purchase";
+
+
+
 
 @Component({
   selector: 'app-checkout',
