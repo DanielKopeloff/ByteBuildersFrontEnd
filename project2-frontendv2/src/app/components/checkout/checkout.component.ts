@@ -29,8 +29,16 @@ export class CheckoutComponent implements OnInit {
   creditCardYears: number[] = [];
   creditCardMonths: number[] = [];
 
-  states: State[] = [];
+  states: any;
+
+
+  
+  stateArr : string[] = ['AL' ,'AK' , 'AZ' , 'AR' ,'CA' ,'CO' , 'CT' ,'DE' , 'FL' ,'GA' ,'HI' , 'ID' ,'IL' ,'IN' ,'IA' ,'KS' ,'KY' ,'LA' ,'ME' ,'MI' , 'MN' ,'MS' ,'MO' ,'MT' ,'NE' ,
+  'NV' ,'NH' ,'NJ' , 'NM' ,'NY' ,'NC' ,'ND' ,'OH' ,'OK' ,'OR' ,'PA' ,'RI' ,'SC' ,'SD' ,'TN' , 'TX' , 'UT' ,'VT' ,'VA' ,'WA' ,'WV' ,'WI','WY'];
   pageSize = 50;
+
+  freeStates : any ;
+
 
   constructor(private formBuilder: FormBuilder,
               private cartService: CartService,
@@ -145,7 +153,17 @@ export class CheckoutComponent implements OnInit {
       }
     )
 
-    this.byteBuilderService.getStates(this.pageSize).subscribe(this.processResult());
+    // this.byteBuilderService.getStates(this.pageSize).subscribe(this.processResult());
+
+    // this.byteBuilderService.getToken().subscribe(data => {
+  
+    //   this.byteBuilderService.setToken(data)
+      
+    // });
+    
+
+    // setTimeout(()=> {this.getStates()} ,1250)
+    
 
   }
 
@@ -203,6 +221,14 @@ export class CheckoutComponent implements OnInit {
     this.router.navigateByUrl("/home");
   }
 
+  getStates(){
+    this.byteBuilderService.getFreeStates().subscribe(data => {
+      this.states  = data;
+      console.log(data);
+     
+
+    }); 
+  }
   handleMonthsAndYears() {
     const creditCardFormGroup = this.checkoutFormGroup.get('creditCard');
     const currentYear: number = new Date().getFullYear();
@@ -224,7 +250,9 @@ export class CheckoutComponent implements OnInit {
   }
 
   processResult() {
+  
     return data => {
+      console.log("This is inside the return"  + data)
       this.states = data._embedded.states;
       this.pageSize = data.page.size;
     };
@@ -240,4 +268,30 @@ export class CheckoutComponent implements OnInit {
       totalPrice => this.totalPrice = totalPrice
     );
   }
+}
+
+enum Sates {
+  AL = 'Alabama' , 
+  AK = 'Alaska' ,
+  AZ = 'Arizona' ,
+  CA ='California' ,
+  CO = 'Colorado' ,  
+  CT = 'Connecticut' ,
+  DE= 'Delaware' , 
+  FL =' Florida' ,
+  GA = 'Georgia' ,
+  HI ='Hawaii' ,
+  ID ='Idaho' ,
+  IL ='Illinois' ,
+  IN ='Indiana' ,
+  IA = 'IOWA' , 
+  KS = 'Kansas' ,
+  KY = 'Kentucky' ,
+  LA = 'Louisiana' ,
+  ME ='Maine' ,
+
+  
+
+
+
 }
