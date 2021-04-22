@@ -11,6 +11,8 @@ export class AppComponent implements OnInit, OnDestroy{
   isAuthenticated = false;
   private userSub: Subscription;
 
+  storage :Storage = sessionStorage;
+
   title = 'project2-frontendv2';
   constructor(private authService: AuthService){}
 
@@ -23,6 +25,16 @@ export class AppComponent implements OnInit, OnDestroy{
   }
 
   ngOnInit(){
+
+    let data = JSON.parse(this.storage.getItem('byteU'))
+
+    if(data !=  null){
+      this.isAuthenticated = true
+    }
+    else{
+      this.isAuthenticated = false;
+    }
+
     this.userSub = this.authService.user.subscribe(user =>{
       this.isAuthenticated = !!user;//!user ? false : true;
       console.log(!user);

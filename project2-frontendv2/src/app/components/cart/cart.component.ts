@@ -16,14 +16,16 @@ export class CartComponent implements OnInit {
   userId : number;
   totalPrice : number;
   totalQuantity : number;
+  isAuth : boolean;
   
 
-  constructor(private cartService: CartService,private route: ActivatedRoute , private auth:AuthService) { }
+  constructor(private cartService: CartService,private route: ActivatedRoute ) { }
 
   ngOnInit(): void {
     this.listProducts();
-  
+
   }
+
 
   listProducts(){
     this.products = this.cartService.cartItems;
@@ -84,5 +86,7 @@ export class CartComponent implements OnInit {
   remove(cartItem){
     this.cartService.remove(cartItem);
   }
+
+
 
 }

@@ -155,14 +155,14 @@ export class CheckoutComponent implements OnInit {
 
     // this.byteBuilderService.getStates(this.pageSize).subscribe(this.processResult());
 
-    this.byteBuilderService.getToken().subscribe(data => {
+    // this.byteBuilderService.getToken().subscribe(data => {
   
-      this.byteBuilderService.setToken(data)
+    //   this.byteBuilderService.setToken(data)
       
-    });
+    // });
     
 
-    setTimeout(()=> {this.getStates()} ,1250)
+    // setTimeout(()=> {this.getStates()} ,1250)
     
 
   }

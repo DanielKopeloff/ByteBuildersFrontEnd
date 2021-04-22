@@ -137,10 +137,7 @@ export class CartService {
   }
 
   persistCartItem() {
-
     this.storage.setItem('cartItems', JSON.stringify(this.cartItems));
-
-  
   }
 
 }

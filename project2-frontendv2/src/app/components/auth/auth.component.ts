@@ -13,6 +13,8 @@ export class AuthComponent {
     isLoading = false;
     error: string = null;
 
+    storage : Storage = sessionStorage;
+
     constructor(private authService: AuthService, private router: Router){}
 
     onSwitchMode(){
@@ -39,8 +41,9 @@ export class AuthComponent {
             this.authService.login(username,password).subscribe(
                 resData =>{
                     console.log(resData);
+                    this.storage.setItem('byteU',JSON.stringify(resData))
                     this.isLoading = false;
-                    this.router.navigate(['/home']);//on sucessful login go to home page
+                    this.router.navigate(['/home']);//on successful login go to home page
                 },
                 errorMessage => {
                     console.log(errorMessage);

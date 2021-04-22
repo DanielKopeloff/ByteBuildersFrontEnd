@@ -16,6 +16,8 @@ export class ReviewService {
   private getByteOrder= 'http://localhost:8080/api/byte-order/search/byteOrderReview/';
   private postReview = 'http://localhost:8080/api/review';
 
+ 
+
 
   constructor(private httpClient: HttpClient) {
     console.log("This is the hitting"  + this.getReviews())
@@ -40,12 +42,24 @@ export class ReviewService {
     this.prodID = prodId;
   }
 
+  getByteOrders(prodId:string , userId:number){
+    const searchUrl = `${this.getByteOrder}?productId=${prodId}&userId=${userId}`;
+    console.log(searchUrl);
+    return this.httpClient.get<string>(searchUrl).pipe(
+      map(response => response.toString())
+    );
+  }
+
 }
+
+
 
 interface GetResponseReviews {
   _embedded: {
     reviews : Review[];
   };
 }
+
+
 
 
