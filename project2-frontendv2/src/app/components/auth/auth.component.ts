@@ -29,7 +29,7 @@ export class AuthComponent {
         const firstName = form.value.firstName;
         const lastName = form.value.lastName;
         const email = form.value.email;
-        const byteRole = form.value.byteRole;
+        const role = form.value.role;
         const profilePic = form.value.profilePic;
 
         let authObs: Observable<AuthReponse>;// replace code for if else with this but ehh
@@ -49,7 +49,7 @@ export class AuthComponent {
                 }
             );
         } else{
-            this.authService.signup(username,password, firstName, lastName, email, byteRole, profilePic).subscribe(
+            this.authService.signup(username,password, firstName, lastName, email, role, profilePic).subscribe(
                 resData =>{
                     console.log(resData);
                     this.isLoading = false;
