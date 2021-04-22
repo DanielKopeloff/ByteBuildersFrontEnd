@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CartItem } from 'src/app/common/cart-item';
+import { AuthService } from 'src/app/services/auth.service';
 import { CartService } from 'src/app/services/cart.service';
 
 
@@ -17,7 +18,7 @@ export class CartComponent implements OnInit {
   totalQuantity : number;
   
 
-  constructor(private cartService: CartService,private route: ActivatedRoute) { }
+  constructor(private cartService: CartService,private route: ActivatedRoute , private auth:AuthService) { }
 
   ngOnInit(): void {
     this.listProducts();

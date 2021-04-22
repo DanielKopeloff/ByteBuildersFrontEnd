@@ -2,15 +2,15 @@
   <div class="section-content section-p30">
     <div class="container-fluid">
       <form [formGroup]="checkoutFormGroup" (ngSubmit)="onSubmit()">
-        <div formGroupName="byteUser" class="form-group">
+        <div formGroupName="byteUser" class="form-area">
           <h3 class="display-4 text-center mt-5 mb-5">Customer Information</h3>
           <div class="row my-4">
             <div class="col-md-11"><h5><label for="input-lg-first-name">First Name:</label></h5></div>
-              <div *ngIf="firstName.invalid && firstName.touched" class="form-validation-alert alert alert-danger ">
-                <div *ngIf="firstName.errors.required || lastName.errors.noWhiteSpace">
-                  First Name is required.
-                </div>
+            <div *ngIf="firstName.invalid && firstName.touched" class="form-validation-alert alert alert-danger ">
+              <div *ngIf="firstName.errors.required || lastName.errors.noWhiteSpace">
+                First Name is required.
               </div>
+            </div>
             <div class="input-group">
               <input id="input-lg-first-name" class="form-control input-lg input-lg" type="text"
                      formControlName="firstName" required>
@@ -48,7 +48,8 @@
           <h3 class="display-4 text-center mt-5 mb-5">Shipping Address</h3>
           <div class="row my-4">
             <div class="col-md-11"><h5><label for="shipping-street">Street Name:</label></h5></div>
-            <div *ngIf="shippingAddressStreet.invalid && shippingAddressStreet.touched" class="form-validation-alert alert alert-danger ">
+            <div *ngIf="shippingAddressStreet.invalid && shippingAddressStreet.touched"
+                 class="form-validation-alert alert alert-danger ">
               <div *ngIf="shippingAddressStreet.errors.required || shippingAddressStreet.errors.noWhiteSpace">
                 Street is required.
               </div>
@@ -60,7 +61,8 @@
           </div>
           <div class="row my-4">
             <div class="col-md-11"><h5><label for="input-lg-shipping-city">City:</label></h5></div>
-            <div *ngIf="shippingAddressCity.invalid && shippingAddressCity.touched" class="form-validation-alert alert alert-danger ">
+            <div *ngIf="shippingAddressCity.invalid && shippingAddressCity.touched"
+                 class="form-validation-alert alert alert-danger ">
               <div *ngIf="shippingAddressCity.errors.required || shippingAddressCity.errors.noWhiteSpace">
                 City is required.
               </div>
@@ -72,7 +74,8 @@
           </div>
           <div class="row my-4">
             <div class="col-md-11"><h5><label for="input-lg-shipping-state">State:</label></h5></div>
-            <div *ngIf="shippingAddressState.invalid && shippingAddressState.touched" class="form-validation-alert alert alert-danger">
+            <div *ngIf="shippingAddressState.invalid && shippingAddressState.touched"
+                 class="form-validation-alert alert alert-danger">
               <div *ngIf="shippingAddressState.errors.required">
                 State is required.
               </div>
@@ -86,7 +89,8 @@
           </div>
           <div class="row my-4">
             <div class="col-md-11"><h5><label for="input-lg-shipping-zip-code">Zip Code:</label></h5></div>
-            <div *ngIf="shippingAddressZipCode.invalid && shippingAddressZipCode.touched" class="form-validation-alert alert alert-danger ">
+            <div *ngIf="shippingAddressZipCode.invalid && shippingAddressZipCode.touched"
+                 class="form-validation-alert alert alert-danger ">
               <div *ngIf="shippingAddressZipCode.errors.required || shippingAddressZipCode.errors.noWhiteSpace">
                 Zip Code is required.
               </div>
@@ -102,7 +106,8 @@
           <h3 class="display-4 text-center mt-5 mb-5">Billing Address</h3>
           <div class="row my-4">
             <div class="col-md-11"><h5><label for="billing-street">Street Name:</label></h5></div>
-            <div *ngIf="billingAddressStreet.invalid && billingAddressStreet.touched" class="form-validation-alert alert alert-danger ">
+            <div *ngIf="billingAddressStreet.invalid && billingAddressStreet.touched"
+                 class="form-validation-alert alert alert-danger ">
               <div *ngIf="billingAddressStreet.errors.required || billingAddressStreet.errors.noWhiteSpace">
                 Street is required.
               </div>
@@ -114,7 +119,8 @@
           </div>
           <div class="row my-4">
             <div class="col-md-11"><h5><label for="input-lg-billing-city">City:</label></h5></div>
-            <div *ngIf="billingAddressCity.invalid && billingAddressCity.touched" class="form-validation-alert alert alert-danger ">
+            <div *ngIf="billingAddressCity.invalid && billingAddressCity.touched"
+                 class="form-validation-alert alert alert-danger ">
               <div *ngIf="billingAddressCity.errors.required || billingAddressCity.errors.noWhiteSpace">
                 City is required.
               </div>
@@ -126,7 +132,8 @@
           </div>
           <div class="row my-4">
             <div class="col-md-11"><h5><label for="input-lg-billing-state">State:</label></h5></div>
-            <div *ngIf="billingAddressState.invalid && billingAddressState.touched" class="form-validation-alert alert alert-danger">
+            <div *ngIf="billingAddressState.invalid && billingAddressState.touched"
+                 class="form-validation-alert alert alert-danger">
               <div *ngIf="billingAddressState.errors.required">
                 State is required.
               </div>
@@ -140,7 +147,8 @@
           </div>
           <div class="row my-4">
             <div class="col-md-11"><h5><label for="input-lg-billing-zip-code">Zip Code:</label></h5></div>
-            <div *ngIf="billingAddressZipCode.invalid && billingAddressZipCode.touched" class="form-validation-alert alert alert-danger ">
+            <div *ngIf="billingAddressZipCode.invalid && billingAddressZipCode.touched"
+                 class="form-validation-alert alert alert-danger ">
               <div *ngIf="billingAddressZipCode.errors.required || billingAddressZipCode.errors.noWhiteSpace">
                 Zip Code is required.
               </div>
@@ -154,7 +162,8 @@
 
         <div formGroupName="creditCard" class="form-group">
           <h3 class="display-4 text-center mt-5 mb-5">Credit Card Information</h3>
-          <div *ngIf="creditCardName.invalid && creditCardName.touched" class="form-validation-alert alert alert-danger ">
+          <div *ngIf="creditCardName.invalid && creditCardName.touched"
+               class="form-validation-alert alert alert-danger ">
             <div *ngIf="creditCardName.errors.required">
               Name on Card required
             </div>
@@ -168,7 +177,8 @@
           </div>
           <div class="row my-4">
             <div class="col-md-11"><h5><label for="credit-card-type">Credit Card Type:</label></h5></div>
-            <div *ngIf="creditCardType.invalid && creditCardType.touched" class="form-validation-alert alert alert-danger ">
+            <div *ngIf="creditCardType.invalid && creditCardType.touched"
+                 class="form-validation-alert alert alert-danger ">
               <div *ngIf="creditCardType.errors.required">
                 Credit Card Type required.
               </div>
@@ -185,7 +195,8 @@
           </div>
           <div class="row my-4">
             <div class="col-md-11"><h5><label for="credit-card-number">Credit Card #:</label></h5></div>
-            <div *ngIf="creditCardNumber.invalid && creditCardNumber.touched" class="form-validation-alert alert alert-danger ">
+            <div *ngIf="creditCardNumber.invalid && creditCardNumber.touched"
+                 class="form-validation-alert alert alert-danger ">
               <div *ngIf="creditCardNumber.errors.required">
                 Credit Card Number required
               </div>
@@ -205,7 +216,8 @@
           </div>
           <div class="row mb-5">
             <div class="col-md-4 input-group">
-              <div *ngIf="creditCardSecurityCode.invalid && creditCardSecurityCode.touched" class="form-validation-alert alert alert-danger ">
+              <div *ngIf="creditCardSecurityCode.invalid && creditCardSecurityCode.touched"
+                   class="form-validation-alert alert alert-danger ">
                 <div *ngIf="creditCardSecurityCode.errors.required">
                   Security Code required
                 </div>
@@ -230,18 +242,18 @@
             </div>
           </div>
         </div>
-        <div>
-          <div class="review-order row p-3">
-            <div class="col-md-12">
-              <h3 class="display-4">Review Your Order</h3>
-            </div>
-            <div class="col-md-12 mt-2">
-              <h5>Total Quantity: {{totalQuantity}}</h5>
-            </div>
-            <div class="col-md-12 mt-2">
-              <h5>Total Price: {{totalPrice | currency: 'USD'}}</h5>
-            </div>
+        <div class="form-aea review-order row p-3">
+          <div class="col-md-12">
+            <h3 class="display-4">Review Your Order</h3>
           </div>
+          <div class="col-md-12 mt-2">
+            <h5>Total Quantity: {{totalQuantity}}</h5>
+          </div>
+          <div class="col-md-12 mt-2">
+            <h5>Total Price: {{totalPrice | currency: 'USD'}}</h5>
+          </div>
+        </div>
+        <div>
           <button type="submit" class="btn btn-success btn-lg btn-block">Purchase</button>
         </div>
       </form>

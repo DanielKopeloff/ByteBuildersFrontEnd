@@ -4,8 +4,15 @@ import {ByteBuilderFormService} from "../../services/byte-builder-form.service";
 
 import {ByteBuilderValidator} from "../../validators/byte-builder-validator";
 import {CartService} from "../../services/cart.service";
-import { State } from 'src/app/common/state';
-import { FreeState } from 'src/app/common/free-state';
+
+import {State} from "../../common/state";
+import {Router} from "@angular/router";
+import {CheckoutService} from "../../services/checkout.service";
+import {ByteOrder} from "../../common/byte-order";
+import {ProductOrder} from "../../common/product-order";
+import {Purchase} from "../../common/purchase";
+
+
 
 
 @Component({
@@ -35,7 +42,9 @@ export class CheckoutComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private cartService: CartService,
-              private byteBuilderService: ByteBuilderFormService) {
+              private byteBuilderService: ByteBuilderFormService,
+              private checkoutService: CheckoutService,
+              private router: Router) {
   }
 
   get firstName() {
@@ -159,9 +168,57 @@ export class CheckoutComponent implements OnInit {
   }
 
   onSubmit() {
+
+    console.log(this.totalPrice);
+
     if (this.checkoutFormGroup.invalid) {
       this.checkoutFormGroup.markAllAsTouched();
     }
+
+    let byteOrder = new ByteOrder();
+    byteOrder.totalPrice = this.totalPrice;
+    byteOrder.totalQuantity = this.totalQuantity;
+
+    const cartItems = this.cartService.cartItems;
+
+    let productOrders: ProductOrder[] = cartItems.map(cartItem => new ProductOrder(cartItem));
+    console.log(productOrders);
+
+    let purchase = new Purchase();
+
+    purchase.byteUser = this.checkoutFormGroup.controls['byteUser'].value;
+    console.log(purchase.byteUser);
+
+    purchase.shippingAddress = this.checkoutFormGroup.controls['shippingAddress'].value;
+    const shippingState: State = JSON.parse(JSON.stringify(purchase.shippingAddress.state));
+    purchase.shippingAddress.state = shippingState.stateName;
+
+    purchase.billingAddress = this.checkoutFormGroup.controls['billingAddress'].value;
+    const billingAddress: State = JSON.parse(JSON.stringify(purchase.billingAddress.state));
+    purchase.billingAddress.state = billingAddress.stateName;
+
+    purchase.byteOrder = byteOrder;
+    purchase.productOrders = productOrders;
+
+    this.checkoutService.placeOrder(purchase).subscribe(
+      {
+        next: response => {
+          alert(`Your order has been submitted!`)
+          this.resetCart();
+        },
+        error: err => {
+          alert(`There was an error: ${err.message}`);
+        }
+      }
+    );
+  }
+
+  resetCart() {
+    this.cartService.cartItems = [];
+    this.cartService.totalPrice.next(0);
+    this.cartService.totalQuantity.next(0);
+    this.checkoutFormGroup.reset();
+    this.router.navigateByUrl("/home");
   }
 
   getStates(){
@@ -200,6 +257,8 @@ export class CheckoutComponent implements OnInit {
       this.pageSize = data.page.size;
     };
   }
+
+
 
   private reviewCartDetails() {
     this.cartService.totalQuantity.subscribe(
