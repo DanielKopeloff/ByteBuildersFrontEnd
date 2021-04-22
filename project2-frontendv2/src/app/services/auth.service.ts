@@ -29,7 +29,7 @@ export class AuthService{
 
     signup(username: string, password: string, 
         firstName: string, lastName: string, 
-        email: string, byteRole: number, profilePic: string){
+        email: string, role: number, profilePic: string){
         return this.http.post('http://localhost:8080/api/byte-user',
         {
             "username": username,
@@ -37,7 +37,7 @@ export class AuthService{
             "firstName": firstName,
             "lastName": lastName,
             "email": email,
-            "byteRole": byteRole,
+            "role": role,
             "profilePic": profilePic
         }
         ).pipe(catchError(this.handleError));

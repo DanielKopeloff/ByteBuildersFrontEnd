@@ -34,8 +34,6 @@ export class AuthComponent {
         const role = form.value.role;
         const profilePic = form.value.profilePic;
 
-        let authObs: Observable<AuthReponse>;// replace code for if else with this but ehh
-
         this.isLoading = true;
         if(this.isLoginMode){
             this.authService.login(username,password).subscribe(
