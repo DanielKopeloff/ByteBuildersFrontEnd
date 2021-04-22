@@ -23,6 +23,8 @@ export interface AuthReponse{
 export class AuthService{
     user = new Subject<ByteUserLogin>();
 
+    
+
     constructor(private http: HttpClient, private router: Router) {}
 
     signup(username: string, password: string, 
@@ -43,6 +45,7 @@ export class AuthService{
 
     logout() {
         this.user.next(null);
+        sessionStorage.clear();
         this.router.navigate(['/home']);
     }
 
