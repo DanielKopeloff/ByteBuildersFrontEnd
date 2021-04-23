@@ -47,15 +47,17 @@
         <i class="fa fa-home fa-2x icon-a mr-3"></i>
       </a>
     </div>
-    <div>
-      <a href="/auth">
-        <i class="fa fa-user fa-2x mr-1"></i>
-      </a>
-
-      <a style="cursor: pointer; color:white;" (click)="onLogout()" *ngIf="isAuthenticated">Logout</a>
-    </div>
     <div class="mx-2" *ngIf="isAuthenticated">
       <app-cart-status></app-cart-status>
+    </div>
+    <div *ngIf="!isAuthenticated">
+      <a href="/auth">
+        <i class="fa fa-sign-in-alt fa-2x mr-1"></i>
+      </a>
+      
+    </div>
+    <div *ngIf="isAuthenticated">
+      <a style="cursor: pointer; color:white;" (click)="onLogout()"><i class="fa fa-sign-out-alt fa-2x mr-1"></i></a>
     </div>
   </div>
 </nav>
