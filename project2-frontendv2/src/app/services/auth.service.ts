@@ -76,33 +76,4 @@ export class AuthService{
         );
         
     }
-
-    // handleError(error: HttpErrorResponse) {
-    //     let errorMessage = '';
-    //     if (error.error instanceof ErrorEvent) {
-    //       // client-side error
-    //       errorMessage = `Error: ${error.error.message}`;
-    //     } else {
-    //       // server-side error
-    //       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-    //     }
-    //     window.alert(errorMessage);
-    //     return throwError(errorMessage);
-    //   }
-
-        
-    // private handleError(errorRes: HttpErrorResponse){
-
-    //     console.log(errorRes.error);
-
-    //     let errorMessage = 'An unknown error occurred!';
-    //     if (!errorRes.error || !errorRes.error.error) {
-    //     return throwError(errorMessage);
-    //     }
-    //     switch (errorRes.error.error.message) {
-    //     case `user is shit`:
-    //         errorMessage = 'This username exists already';
-    //     }
-    //     return throwError(errorMessage);
-    // }
 }
