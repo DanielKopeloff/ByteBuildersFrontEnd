@@ -11,11 +11,16 @@ import {Category} from '../common/category';
 export class ProductService {
 
   private baseUrl = 'http://localhost:8080/api/product';
+  public baseUrlTest = 'http://localhost:8080/api/product';
   private categoryUrl = 'http://localhost:8080/api/category';
   private hotUrl = 'http://localhost:8080/api/product/search/hotItems';
   private newItemsUrl = 'http://localhost:8080/api/product/search/newItems';
 
   constructor(private httpClient: HttpClient) {
+  }
+
+  getPostTest(){
+    return this.httpClient.get<Product[]>(`${this.baseUrlTest}`);
   }
 
   getProductListPaginate(page: number, pageSize: number, categoryId: number): Observable<GetResponseProducts> {

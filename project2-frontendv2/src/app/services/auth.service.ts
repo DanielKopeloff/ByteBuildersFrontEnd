@@ -25,15 +25,15 @@ export class AuthService{
     user = new Subject<ByteUserLogin>();
     storage: Storage = sessionStorage;
     byteUser : any;
-    
+
 
     constructor(private http: HttpClient, private router: Router) {
         this.byteUser = JSON.parse(this.storage.getItem('byteU'));
         console.log(this.byteUser);
     }
 
-    signup(username: string, password: string, 
-        firstName: string, lastName: string, 
+    signup(username: string, password: string,
+        firstName: string, lastName: string,
         email: string, role: number, profilePic: string){
         return this.http.post('http://localhost:8080/api/byte-user',
         {
@@ -74,6 +74,6 @@ export class AuthService{
         })
 
         );
-        
+
     }
 }
