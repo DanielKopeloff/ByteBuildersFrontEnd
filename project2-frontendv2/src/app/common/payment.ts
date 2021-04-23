@@ -1,3 +1,4 @@
+
 import { FrontEndPayment } from "./front-end-payment";
 
 export class Payment {
@@ -20,6 +21,5 @@ export class Payment {
     this.expirationDateMonth = Number(frontEndPayment.expirationMonth);
     this.expirationDateYear = frontEndPayment.expirationYear;
   }
-
 
 }

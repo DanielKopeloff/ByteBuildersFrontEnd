@@ -42,7 +42,7 @@ export class CheckoutComponent implements OnInit {
   backendByteOrder : ByteOrder;
   backProductOrder :ProductOrder;
 
-  
+
   stateArr : string[] = ['AL' ,'AK' , 'AZ' , 'AR' ,'CA' ,'CO' , 'CT' ,'DE' , 'FL' ,'GA' ,'HI' , 'ID' ,'IL' ,'IN' ,'IA' ,'KS' ,'KY' ,'LA' ,'ME' ,'MI' , 'MN' ,'MS' ,'MO' ,'MT' ,'NE' ,
   'NV' ,'NH' ,'NJ' , 'NM' ,'NY' ,'NC' ,'ND' ,'OH' ,'OK' ,'OR' ,'PA' ,'RI' ,'SC' ,'SD' ,'TN' , 'TX' , 'UT' ,'VT' ,'VA' ,'WA' ,'WV' ,'WI','WY'];
   pageSize = 50;
@@ -166,14 +166,14 @@ export class CheckoutComponent implements OnInit {
     // this.byteBuilderService.getStates(this.pageSize).subscribe(this.processResult());
 
     // this.byteBuilderService.getToken().subscribe(data => {
-  
+
     //   this.byteBuilderService.setToken(data)
-      
+
     // });
-    
+
 
     // setTimeout(()=> {this.getStates()} ,1250)
-    
+
 
   }
 
@@ -310,7 +310,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   processResult() {
-  
+
     return data => {
       this.states = data._embedded.states;
       this.pageSize = data.page.size;
@@ -329,6 +329,7 @@ export class CheckoutComponent implements OnInit {
   }
 
 
+
   private reviewCartDetails() {
     this.cartService.totalQuantity.subscribe(
       totalQuantity => this.totalQuantity = totalQuantity
@@ -338,4 +339,3 @@ export class CheckoutComponent implements OnInit {
     );
   }
 }
-
