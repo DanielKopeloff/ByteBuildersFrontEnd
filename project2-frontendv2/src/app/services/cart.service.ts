@@ -15,11 +15,31 @@ export class CartService {
   private baseUrl = "http://localhost:8080/api/product/search/cart";
   cartItems:CartItem[] = [];
 
+  /**
+   * This is the session storage so if we refresh the page then the cart items will still be there
+   */
+  storage : Storage = sessionStorage;
+
 
   totalPrice : Subject<number> = new BehaviorSubject<number>(0);
   totalQuantity : Subject<number> = new BehaviorSubject<number>(0);
 
-  constructor(private httpClient: HttpClient) { }
+
+  // read data from str
+  constructor(private httpClient: HttpClient) {
+    let data = JSON.parse(this.storage.getItem('cartItems'));
+
+   
+
+    if(data != null){
+      this.cartItems = data;
+      
+    }
+    // compute the totals
+
+    this.computeCartTotals();
+   
+   }
 
   getCart(userID : number):
   Observable<Product[]>{
@@ -33,7 +53,7 @@ export class CartService {
   /**
    * Check if we already have the item in the Cart
    * find the item in the cart based on item id
-   * @param thecartItem
+   * @param theCartItem
    *
    */
   addToCart(theCartItem:CartItem){
@@ -67,6 +87,8 @@ export class CartService {
     };
     this.totalPrice.next(totalSum);
     this.totalQuantity.next(totalQuantity);
+
+    this.persistCartItem();
 
     //log cart data just for debugging
     //this.logCartData(totalQuantity , totalSum);
@@ -112,6 +134,10 @@ export class CartService {
       this.cartItems.splice(itemIndex ,1);
       this.computeCartTotals();
     }
+  }
+
+  persistCartItem() {
+    this.storage.setItem('cartItems', JSON.stringify(this.cartItems));
   }
 
 }

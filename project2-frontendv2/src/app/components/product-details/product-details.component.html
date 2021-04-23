@@ -12,7 +12,7 @@
         <div class="text mt-5" *ngIf="product.stock === 0; else in_stock">Available: Out of Stock</div>
         <ng-template #in_stock><div class="text mt-5">Available: {{product.stock}}</div></ng-template>
         <hr>
-        <a (click)="addReview(product)" class="btn btn-primary btn-sm ml-2"><h4>Add Review</h4></a>
+        <a (click)="addReview(product)" *ngIf="isAuth" class="btn btn-primary btn-sm ml-2"><h4>Add Review</h4></a>
         <a (click)="seeReviews(product)" class="btn btn-primary btn-sm ml-2"><h4>See Reviews</h4></a>
         <a (click)="addToCart(product)" class="btn btn-primary btn-sm ml-2"><h4>Add to Cart</h4></a>
 
@@ -28,6 +28,3 @@
 
     
 </div>
-
-
-

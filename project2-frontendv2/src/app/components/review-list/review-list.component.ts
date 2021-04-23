@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ByteUser } from 'src/app/common/byte-user';
 import { Review } from 'src/app/common/review';
+import { AuthService } from 'src/app/services/auth.service';
 import { ByteUserService } from 'src/app/services/byte-user.service';
 import { ReviewService } from 'src/app/services/review.service';
 
@@ -17,6 +18,7 @@ export class ReviewListComponent implements OnInit {
 
   tempReview: Review[];
   tempUser: ByteUser[];
+  isAuth :boolean =false;
 
   constructor(private reviewService: ReviewService, private userService: ByteUserService ,private activatedRoute:ActivatedRoute) {
 

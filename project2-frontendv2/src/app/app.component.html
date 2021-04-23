@@ -22,12 +22,13 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" routerLink="/auth">Login</a></li>
             <li><a class="dropdown-item" routerLink="/auth">Register</a></li>
+            <li><a class="dropdown-item" routerLink="/edit" *ngIf="isAuthenticated">Edit User</a></li>
             <li>
               <hr class="dropdown-divider">
             </li>
             <li><a class="dropdown-item" routerLink="/products">See All Items</a></li>
-            <li><a class="dropdown-item" routerLink="/">See Hot Items</a></li>
-            <li><a class="dropdown-item" routerLink="/">See New Items</a></li>
+            <li><a class="dropdown-item" routerLink="/products">See Hot Items</a></li>
+            <li><a class="dropdown-item" routerLink="/products">See New Items</a></li>
             <li>
               <hr class="dropdown-divider">
             </li>
@@ -51,7 +52,7 @@
         <i class="fa fa-user fa-2x mr-1"></i>
       </a>
 
-      <a style="cursor: pointer; color:white;" (click)="onLogout()">Logout</a>
+      <a style="cursor: pointer; color:white;" (click)="onLogout()" *ngIf="isAuthenticated">Logout</a>
     </div>
     <div class="mx-2" *ngIf="isAuthenticated">
       <app-cart-status></app-cart-status>

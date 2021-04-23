@@ -14,5 +14,9 @@ export class ByteUserLogin {
         return this._token;
     }
 
+    get number(){
+        return this.id;
+    }
+
   }
   

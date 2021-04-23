@@ -5,6 +5,9 @@ import {Product} from '../../common/product';
 import { CartItem } from 'src/app/common/cart-item';
 import { CartService } from 'src/app/services/cart.service';
 import { ReviewService } from 'src/app/services/review.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { Subscription } from 'rxjs';
+import { ByteUserLogin } from 'src/app/common/byte-login-stuff';
 
 @Component({
   selector: 'app-product-details',
@@ -17,15 +20,35 @@ export class ProductDetailsComponent implements OnInit {
   allReviews:boolean = false;
   addReviewForm : boolean = false;
 
+  user : any;
+  
+  isAuth : boolean;
+
+  storage : Storage = sessionStorage;
+
+
+  
+
+
   constructor(private productService: ProductService,
               private route: ActivatedRoute ,
               private cartService:CartService ,
-              private reviewService : ReviewService) { }
+              private reviewService : ReviewService ){ }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
       this.handleProductDetails();
     });
+
+    this.checkUser();
+  }
+  checkUser() {
+      
+      if(JSON.parse(this.storage.getItem('byteU')) != null){
+        this.isAuth = true;
+      }
+    
+    
   }
 
   // tslint:disable-next-line:typedef
@@ -59,7 +82,7 @@ export class ProductDetailsComponent implements OnInit {
      
   }
 
-  addReview(product : Product){
+  addReview(){
     this.addReviewForm = true;
   }
 

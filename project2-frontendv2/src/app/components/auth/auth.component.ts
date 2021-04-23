@@ -13,6 +13,8 @@ export class AuthComponent {
     isLoading = false;
     error: string = null;
 
+    storage : Storage = sessionStorage;
+
     constructor(private authService: AuthService, private router: Router){}
 
     onSwitchMode(){
@@ -32,15 +34,14 @@ export class AuthComponent {
         const role = form.value.role;
         const profilePic = form.value.profilePic;
 
-        let authObs: Observable<AuthReponse>;// replace code for if else with this but ehh
-
         this.isLoading = true;
         if(this.isLoginMode){
             this.authService.login(username,password).subscribe(
                 resData =>{
                     console.log(resData);
+                    this.storage.setItem('byteU',JSON.stringify(resData))
                     this.isLoading = false;
-                    this.router.navigate(['/home']);//on sucessful login go to home page
+                    this.router.navigate(['/home']);//on successful login go to home page
                 },
                 errorMessage => {
                     console.log(errorMessage);

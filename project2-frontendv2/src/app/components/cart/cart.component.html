@@ -17,7 +17,7 @@
           </thead>
           <tbody>
           <tr *ngFor="let cartItem of products">
-            <td>Item # <br>{{cartItem.id}}</td>
+            <td>Item # <br>{{cartItem.sku}}</td>
             <td headers="Item"><img src="{{cartItem.imageUrl}}" alt="" class="img-responsive" height="100"/></td>
             <td>{{cartItem.description | titlecase}}</td>
             <td *ngIf=" cartItem.stock === 0 " class="stock">Out Of Stock</td>
@@ -27,14 +27,14 @@
             <td>
               <div class="items">
                 <div class="row no-gutters">
-                  <div class="col-md-2 ml-2">
-                    <button (click)="incrementQuantity(cartItem)" class="btn btn-primary btn-sm">
+                  <div class="col-md-2 ml-2 mr-1">
+                    <button (click)="incrementQuantity(cartItem)" class="btn btn-primary btn-sm mr-2">
                       <i class="fa fa-plus"></i>
                     </button>
                   </div>
                   <div class="item-quantity-in-cart col-md-2 mr-1 ml-3"><strong>{{cartItem.quantity}}</strong></div>
                   <div class="col-md-2">
-                    <button (click)="decrementQuantity(cartItem)" class="btn btn-primary btn-sm">
+                    <button (click)="decrementQuantity(cartItem)" class="btn btn-primary btn-sm ">
                       <i class="fa fa-minus"></i>
                     </button>
                   </div>
@@ -62,8 +62,6 @@
           </tbody>
         </table>
       </div>
-      <button routerLink="/checkout">Checkout</button>
-
       <div *ngIf="products.length === 0" class="alert alert-warning col-md-12" role="alert">Your Shopping Cart is
         Empty
       </div>

@@ -28,6 +28,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { FormsModule} from '@angular/forms';
 import { AuthComponent } from './components/auth/auth.component';
 import { LoadingSpinnerComponent } from 'src/assets/loading-spinner/loading-spinner.component';
+import { EditByteUserComponent } from './components/edit-byte-user/edit-byte-user.component';
 
 
 
@@ -43,6 +44,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'cart', component: CartComponent},
   {path: 'auth', component: AuthComponent},
+  {path: 'edit', component: EditByteUserComponent},
 
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: '**', redirectTo: '/home', pathMatch: 'full'},
@@ -69,7 +71,8 @@ const routes: Routes = [
     ReviewDetailsComponent,
     CheckoutComponent,
     AuthComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    EditByteUserComponent
 
   ],
   imports: [

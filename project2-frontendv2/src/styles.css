@@ -17,11 +17,11 @@ body {
 -------------------------------------------------- */
 html {
   position: relative;
-  min-height: 300vh;
+  min-height: 100vh;
 }
 
 .footer {
-  position: absolute;
+  position: relative;
   bottom: 0;
   width: 100%;
   height: 200px; /* Set the fixed height of the footer here */

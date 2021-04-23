@@ -16,24 +16,26 @@ export class CartComponent implements OnInit {
   userId : number;
   totalPrice : number;
   totalQuantity : number;
+  isAuth : boolean;
   
 
-  constructor(private cartService: CartService,private route: ActivatedRoute) { }
+  constructor(private cartService: CartService,private route: ActivatedRoute ) { }
 
   ngOnInit(): void {
     this.listProducts();
-  
+
   }
+
 
   listProducts(){
     this.products = this.cartService.cartItems;
 
     this.cartService.totalPrice.subscribe(
-      data=> this.totalPrice = data
+      data => this.totalPrice = data
     );
 
     this.cartService.totalQuantity.subscribe(
-      data=> this.totalQuantity = data
+      data => this.totalQuantity = data
     );
 
 
@@ -66,7 +68,14 @@ export class CartComponent implements OnInit {
   }
 
   incrementQuantity(cartItem:CartItem ){
+  
+    if(cartItem.quantity ===  cartItem.stock){
+      return
+    }
+    else{
       this.cartService.addToCart(cartItem);
+    }
+     
 
   }
 
@@ -77,5 +86,7 @@ export class CartComponent implements OnInit {
   remove(cartItem){
     this.cartService.remove(cartItem);
   }
+
+
 
 }
