@@ -13,15 +13,13 @@ import { ReviewService } from 'src/app/services/review.service';
 })
 export class ReviewListComponent implements OnInit {
 
-
-
   prodId:number;
 
   tempReview: Review[];
   tempUser: ByteUser[];
 
   constructor(private reviewService: ReviewService, private userService: ByteUserService ,private activatedRoute:ActivatedRoute) {
-    
+
 
    }
 
@@ -30,7 +28,7 @@ export class ReviewListComponent implements OnInit {
     this.getUsers();
     this.getReviews();
 
-   
+
   }
 
   getReviews(){

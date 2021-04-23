@@ -25,8 +25,8 @@ export class AddReviewComponent implements OnInit {
 
   onSubmit(event:any){
     this.submitted = true;
-     
-      
+
+
      const body ={
     "comment":`${this.commentElement.nativeElement.value}`,
       "rating":`${this.ratingElement.nativeElement.value}`,
