@@ -17,7 +17,7 @@
           </thead>
           <tbody>
           <tr *ngFor="let cartItem of products">
-            <td>Item # <br>{{cartItem.id}}</td>
+            <td>Item # <br>{{cartItem.sku}}</td>
             <td headers="Item"><img src="{{cartItem.imageUrl}}" alt="" class="img-responsive" height="100"/></td>
             <td>{{cartItem.description | titlecase}}</td>
             <td *ngIf=" cartItem.stock === 0 " class="stock">Out Of Stock</td>

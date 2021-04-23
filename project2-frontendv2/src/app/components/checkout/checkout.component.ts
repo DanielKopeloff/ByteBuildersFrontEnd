@@ -11,6 +11,10 @@ import {CheckoutService} from "../../services/checkout.service";
 import {ByteOrder} from "../../common/byte-order";
 import {ProductOrder} from "../../common/product-order";
 import {Purchase} from "../../common/purchase";
+import { BackEndAddress } from 'src/app/common/back-end-address';
+import { Payment } from 'src/app/common/payment';
+import { BackEndByteOrder } from 'src/app/common/back-end-byte-order';
+import { BackEndProductOrder } from 'src/app/common/back-end-product-order';
 
 
 
@@ -31,6 +35,12 @@ export class CheckoutComponent implements OnInit {
 
   states: any;
 
+  storage : Storage =sessionStorage;
+  backendShippingAddress : BackEndAddress;
+  backendBillingAddress : BackEndAddress;
+  backendPayment : Payment;
+  backendByteOrder : ByteOrder;
+  backProductOrder :ProductOrder;
 
   
   stateArr : string[] = ['AL' ,'AK' , 'AZ' , 'AR' ,'CA' ,'CO' , 'CT' ,'DE' , 'FL' ,'GA' ,'HI' , 'ID' ,'IL' ,'IN' ,'IA' ,'KS' ,'KY' ,'LA' ,'ME' ,'MI' , 'MN' ,'MS' ,'MO' ,'MT' ,'NE' ,
@@ -190,45 +200,85 @@ export class CheckoutComponent implements OnInit {
     console.log(purchase.byteUser);
 
     purchase.shippingAddress = this.checkoutFormGroup.controls['shippingAddress'].value;
-    const shippingState: State = JSON.parse(JSON.stringify(purchase.shippingAddress.state));
-    purchase.shippingAddress.state = shippingState.stateName;
+    // const shippingState: State = JSON.parse(JSON.stringify(purchase.shippingAddress.state));
 
+    console.log(purchase.shippingAddress)
     purchase.billingAddress = this.checkoutFormGroup.controls['billingAddress'].value;
-    const billingAddress: State = JSON.parse(JSON.stringify(purchase.billingAddress.state));
-    purchase.billingAddress.state = billingAddress.stateName;
+    // const billingAddress: State = JSON.parse(JSON.stringify(purchase.billingAddress.state));
+    console.log(purchase.billingAddress);
+    let frontPayment = this.checkoutFormGroup.controls['creditCard'].value;
+
+    // console.log("This is the payment" + JSON.stringify(frontPayment));
+ 
+    // console.log(JSON.parse(this.storage.getItem('byteU')).userId);
+
+    let payment = new Payment(frontPayment , JSON.parse(this.storage.getItem('byteU')).userId);
 
     purchase.byteOrder = byteOrder;
     purchase.productOrders = productOrders;
 
-    this.checkoutService.placeOrder(purchase).subscribe(
-      {
-        next: response => {
-          alert(`Your order has been submitted!`)
-          this.resetCart();
-        },
-        error: err => {
-          alert(`There was an error: ${err.message}`);
-        }
-      }
-    );
+   
+   const backAddressShipping = new BackEndAddress(purchase.shippingAddress);
+   const backAddressBilling = new BackEndAddress(purchase.billingAddress);
+
+   
+   
+   
+   
+   
+   // So for the checkout to work it has to follow these steps 
+   /**
+    * 1. Put the addresses in the DB Check
+    * 2. Put the payment in the DB Check
+    * 3. Create a byte Order with the addresses,payment , and user and other fields check
+    * 4. Create a product order for each product check
+    * 5. Update the stock of the items 
+    * 
+    * 
+    * 
+    */
+    this.checkoutService.addAddress(backAddressShipping).subscribe(
+      data =>this.backendShippingAddress = data);
+
+    this.checkoutService.addAddress(backAddressBilling).subscribe(
+      data=>this.backendBillingAddress = data);
+
+    this.checkoutService.addPayment(payment).subscribe(
+      data=>this.backendPayment = data);
+
+    setTimeout(()=> this.makeByteOrder(this.backendBillingAddress ,this.backendShippingAddress , byteOrder , productOrders) , 3000)
+     
+
+    // this.checkoutService.placeOrder(purchase).subscribe(
+    //   {
+    //     next: response => {
+    //       alert(`Your order has been submitted!`)
+    //       this.resetCart();
+    //     },
+    //     error: err => {
+    //       alert(`There was an error: ${err.message}`);
+    //     }
+    //   }
+    // );
   }
 
   resetCart() {
     this.cartService.cartItems = [];
+    this.storage.setItem('cartItems' , JSON.stringify(this.cartService.cartItems))
     this.cartService.totalPrice.next(0);
     this.cartService.totalQuantity.next(0);
     this.checkoutFormGroup.reset();
     this.router.navigateByUrl("/home");
   }
 
-  getStates(){
-    this.byteBuilderService.getFreeStates().subscribe(data => {
-      this.states  = data;
-      console.log(data);
+  // getStates(){
+  //   this.byteBuilderService.getFreeStates().subscribe(data => {
+  //     this.states  = data;
+  //     console.log(data);
      
 
-    }); 
-  }
+  //   }); 
+  // }
   handleMonthsAndYears() {
     const creditCardFormGroup = this.checkoutFormGroup.get('creditCard');
     const currentYear: number = new Date().getFullYear();
@@ -249,15 +299,34 @@ export class CheckoutComponent implements OnInit {
     );
   }
 
+  makeByteOrder(shipping:BackEndAddress , billing:BackEndAddress , byteOrder: ByteOrder , productOrders:ProductOrder[]){
+    const backByteOrder = new BackEndByteOrder(byteOrder , shipping , billing , JSON.parse(this.storage.getItem('byteU')).userId);
+
+    this.checkoutService.addByteOrder(backByteOrder).subscribe(
+      data => {
+        this.backendByteOrder = data
+        this.addProductOrder(productOrders)
+      })
+  }
+
   processResult() {
   
     return data => {
-      console.log("This is inside the return"  + data)
       this.states = data._embedded.states;
       this.pageSize = data.page.size;
     };
   }
 
+  addProductOrder(productOrders:ProductOrder[]){
+    for(let product of productOrders){
+      let prodOrder = new BackEndProductOrder(product.productId , this.backendByteOrder , product.quantity);
+      this.checkoutService.addProductOrder(prodOrder).subscribe(data => console.log(data));
+      this.checkoutService.updateStock(product)
+
+    }
+    this.resetCart();
+
+  }
 
 
   private reviewCartDetails() {
@@ -270,28 +339,3 @@ export class CheckoutComponent implements OnInit {
   }
 }
 
-enum Sates {
-  AL = 'Alabama' , 
-  AK = 'Alaska' ,
-  AZ = 'Arizona' ,
-  CA ='California' ,
-  CO = 'Colorado' ,  
-  CT = 'Connecticut' ,
-  DE= 'Delaware' , 
-  FL =' Florida' ,
-  GA = 'Georgia' ,
-  HI ='Hawaii' ,
-  ID ='Idaho' ,
-  IL ='Illinois' ,
-  IN ='Indiana' ,
-  IA = 'IOWA' , 
-  KS = 'Kansas' ,
-  KY = 'Kentucky' ,
-  LA = 'Louisiana' ,
-  ME ='Maine' ,
-
-  
-
-
-
-}
