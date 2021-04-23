@@ -6,7 +6,7 @@ import { ReviewService } from 'src/app/services/review.service';
 @Component({
   selector: 'app-add-review',
   templateUrl: './add-review.component.html',
-  styleUrls: ['./add-review.component.css'] , 
+  styleUrls: ['./add-review.component.css'] ,
 
 })
 export class AddReviewComponent implements OnInit {
@@ -39,7 +39,7 @@ export class AddReviewComponent implements OnInit {
 
 
   getByteOrder(){
-   
+
     console.log(this.byteUser);
     console.log("This is the user ID" +  this.byteUser.userId);
     this.reviewService.getByteOrders(this.activatedRoute.snapshot.paramMap.get('id'), this.byteUser.userId).subscribe(data => this.byteOrder = data)
@@ -47,7 +47,7 @@ export class AddReviewComponent implements OnInit {
 
   onSubmit(event:any){
     this.submitted = true;
-     
+
 
 
     let comment = this.commentElement.nativeElement.value;
