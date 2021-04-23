@@ -4,9 +4,10 @@ import { Router } from "@angular/router";
 import { Subject, throwError } from "rxjs";
 import { catchError, tap } from "rxjs/operators";
 import { ByteUserLogin } from "../common/byte-login-stuff";
+import { ByteUser } from "../common/byte-user";
 
 export interface AuthReponse{
-    expireDate: Date;
+    expireDate: string;
     date: string;
     id: number;
     username: string;
@@ -22,13 +23,17 @@ export interface AuthReponse{
 @Injectable({providedIn: 'root'})
 export class AuthService{
     user = new Subject<ByteUserLogin>();
+    storage: Storage = sessionStorage;
+    byteUser : any;
 
-    
 
-    constructor(private http: HttpClient, private router: Router) {}
+    constructor(private http: HttpClient, private router: Router) {
+        this.byteUser = JSON.parse(this.storage.getItem('byteU'));
+        console.log(this.byteUser);
+    }
 
-    signup(username: string, password: string, 
-        firstName: string, lastName: string, 
+    signup(username: string, password: string,
+        firstName: string, lastName: string,
         email: string, role: number, profilePic: string){
         return this.http.post('http://localhost:8080/api/byte-user',
         {
@@ -40,7 +45,10 @@ export class AuthService{
             "role": role,
             "profilePic": profilePic
         }
-        ).pipe(catchError(this.handleError));
+        ).pipe(catchError(errorRes =>{
+            let errorMessage = 'Username already exists.';
+            return throwError(errorMessage);
+        }));
     }
 
     logout() {
@@ -55,7 +63,10 @@ export class AuthService{
             "username": username,
             "password": password
         }
-        ).pipe(catchError(this.handleError), tap(resData =>{
+        ).pipe(catchError(errorRes =>{
+            let errorMessage = 'Invalid login credentials';
+            return throwError(errorMessage);
+        }), tap(resData =>{
             const expirationDate =  new Date(new Date().getTime() + +resData.expireDate)
             const user = new ByteUserLogin( resData.id, resData.username, expirationDate, resData.email, resData._token
             );
@@ -63,19 +74,6 @@ export class AuthService{
         })
 
         );
-        
-    }
-        
-    private handleError(errorRes: HttpErrorResponse){
 
-        let errorMessage = 'An unknown error occurred!';
-        if (!errorRes.error || !errorRes.error.error) {
-        return throwError(errorMessage);
-        }
-        switch (errorRes.error.error.message) {
-        case `ERROR: duplicate key value violates unique constraint \"uk_p1syjsedfm3m0i6oj87jjbd6c\"\n  Detail: Key (username)=(inputUserNameHere) already exists.`:
-            errorMessage = 'This username exists already';
-        }
-        return throwError(errorMessage);
     }
 }

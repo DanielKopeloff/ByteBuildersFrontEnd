@@ -14,8 +14,6 @@ import { ReviewService } from 'src/app/services/review.service';
 })
 export class ReviewListComponent implements OnInit {
 
-
-
   prodId:number;
 
   tempReview: Review[];
@@ -23,7 +21,7 @@ export class ReviewListComponent implements OnInit {
   isAuth :boolean =false;
 
   constructor(private reviewService: ReviewService, private userService: ByteUserService ,private activatedRoute:ActivatedRoute) {
-    
+
 
    }
 
@@ -32,7 +30,7 @@ export class ReviewListComponent implements OnInit {
     this.getUsers();
     this.getReviews();
 
-   
+
   }
 
   getReviews(){

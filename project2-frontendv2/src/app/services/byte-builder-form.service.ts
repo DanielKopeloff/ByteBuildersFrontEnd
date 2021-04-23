@@ -10,6 +10,7 @@ import {map} from "rxjs/operators";
 export class ByteBuilderFormService {
 
   private statesUrl = 'http://localhost:8080/api/states?';
+  public states = 'http://localhost:8080/api/states?';
 
   private publicAPI =("https://www.universal-tutorial.com/api/getaccesstoken");
 
@@ -32,6 +33,10 @@ export class ByteBuilderFormService {
 
   constructor(private httpClient: HttpClient) {
     console.log(this.getToken())
+  }
+
+  getStatesTest(){
+    return this.httpClient.get<State[]>(this.states)
   }
 
   getStates(pageSize: number): Observable<GetResponseStates> {

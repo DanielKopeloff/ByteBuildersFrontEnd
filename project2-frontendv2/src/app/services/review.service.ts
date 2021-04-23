@@ -13,6 +13,7 @@ export class ReviewService {
   prodID : number;
 
   private getAllReviews = 'http://localhost:8080/api/review/search/product_reviews';
+  public getAllTest = 'http://localhost:8080/api/review/search/product_reviews';
   private getByteOrder= 'http://localhost:8080/api/byte-order/search/byteOrderReview/';
   private postReview = 'http://localhost:8080/api/review';
 
@@ -23,6 +24,10 @@ export class ReviewService {
     console.log("This is the hitting"  + this.getReviews())
    }
 
+  getReviewsTest(){
+    return this.httpClient.get<Review[]>(`${this.getAllTest}`);
+  }
+
   getReviews():
   Observable<Review[]>{
     const searchUrl = `${this.getAllReviews}/?productId=${this.prodID}`
@@ -31,11 +36,11 @@ export class ReviewService {
     );
   }
 
- 
+
   addReview(prod:string , body :Object){
     this.httpClient.post<Review>(this.postReview ,body ).subscribe(data => alert( "Review was submitted at - " +data.reviewCreated));
     alert("Please Click to continue")
-    
+
   }
 
   setProdId(prodId:number){
