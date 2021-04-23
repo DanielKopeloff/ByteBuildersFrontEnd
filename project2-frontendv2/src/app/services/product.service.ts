@@ -4,19 +4,17 @@ import {Product} from '../common/product';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {Category} from '../common/category';
-import {Post} from "../models/post.model";
-//import {Post} from "../models/post.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  private baseUrl = 'http://localhost:9000/api/product';
-  public baseUrlTest = 'http://localhost:9000/api/product';
-  private categoryUrl = 'http://localhost:9000/api/category';
-  private hotUrl = 'http://localhost:9000/api/product/search/hotItems';
-  private newItemsUrl = 'http://localhost:9000/api/product/search/newItems';
+  private baseUrl = 'http://localhost:8080/api/product';
+  public baseUrlTest = 'http://localhost:8080/api/product';
+  private categoryUrl = 'http://localhost:8080/api/category';
+  private hotUrl = 'http://localhost:8080/api/product/search/hotItems';
+  private newItemsUrl = 'http://localhost:8080/api/product/search/newItems';
 
   constructor(private httpClient: HttpClient) {
   }

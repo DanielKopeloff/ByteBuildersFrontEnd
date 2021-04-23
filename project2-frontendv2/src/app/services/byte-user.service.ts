@@ -11,9 +11,9 @@ export class ByteUserService {
 
   prodId :string;
 
-  private baseUrl = 'http://localhost:9000/api/byte-user';
-  public baseUrlTest = 'http://localhost:9000/api/byte-user';
-  private users = 'http://localhost:9000/api/byte-user/search/reviewUsers?productId=';
+  private baseUrl = 'http://localhost:8080/api/byte-user';
+  public baseUrlTest = 'http://localhost:8080/api/byte-user';
+  private users = 'http://localhost:8080/api/byte-user/search/reviewUsers?productId=';
 
   constructor(private httpClient: HttpClient) { }
 

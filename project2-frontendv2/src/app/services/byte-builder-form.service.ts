@@ -9,8 +9,8 @@ import {map} from "rxjs/operators";
 })
 export class ByteBuilderFormService {
 
-  private statesUrl = 'http://localhost:9000/api/states?';
-  public states = 'http://localhost:9000/api/states?';
+  private statesUrl = 'http://localhost:8080/api/states?';
+  public states = 'http://localhost:8080/api/states?';
 
   constructor(private httpClient: HttpClient) {
   }

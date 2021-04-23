@@ -28,7 +28,7 @@ export class AuthService{
     signup(username: string, password: string,
         firstName: string, lastName: string,
         email: string, byteRole: number, profilePic: string){
-        return this.http.post('http://localhost:9000/api/byte-user',
+        return this.http.post('http://localhost:8080/api/byte-user',
         {
             "username": username,
             "password": password,
@@ -47,7 +47,7 @@ export class AuthService{
     }
 
     login(username: string, password: string){
-        return this.http.post<AuthReponse>('http://localhost:9000/authenticate',
+        return this.http.post<AuthReponse>('http://localhost:8080/authenticate',
         {
             "username": username,
             "password": password

@@ -12,7 +12,7 @@ import { CartItem } from '../common/cart-item';
 export class CartService {
 
 
-  private baseUrl = "http://localhost:9000/api/product/search/cart";
+  private baseUrl = "http://localhost:8080/api/product/search/cart";
   cartItems:CartItem[] = [];
 
 
