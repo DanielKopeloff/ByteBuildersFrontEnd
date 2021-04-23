@@ -48,17 +48,15 @@ export class CheckoutService {
    * But my thinking for this is I have to grab the stock of the product from the DB because if two users make an order of the the same product then those stock values will no longer be valid. So I would use this method of getting the stock from the DB in stead of the in session memory because that value might be stale 
    */
   updateStock(prod : ProductOrder) {
-    console.log('Hitting the put')
     const searchUrl = `${this.productsURL}${prod.productId}`;
     let currProd : Product;
-    console.log(searchUrl);
     this.httpClient.get<Product>(searchUrl).subscribe(data => {
 
       currProd = data;
-      console.log(prod.quantity + JSON.stringify(currProd));
-      let body =
-      {'stock':currProd.stock-prod.quantity};
-      this.httpClient.put(searchUrl, body ).subscribe(data => console.log(data))
+      currProd.stock = currProd.stock - prod.quantity;
+      
+      // Maybe here we could display like an alert saying their order is completed 
+      this.httpClient.put(searchUrl, currProd ).subscribe(data => console.log(data))
 
 
     })
