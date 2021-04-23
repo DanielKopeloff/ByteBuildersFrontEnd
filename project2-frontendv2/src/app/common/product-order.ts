@@ -2,7 +2,8 @@ import {CartItem} from "./cart-item";
 
 export class ProductOrder {
   quantity: number;
-  productId: string;
+  productId: number;
+  orderId:number;
 
   constructor(cartItem: CartItem) {
     this.quantity = cartItem.quantity;
