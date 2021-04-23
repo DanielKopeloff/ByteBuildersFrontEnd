@@ -22,6 +22,7 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" routerLink="/auth">Login</a></li>
             <li><a class="dropdown-item" routerLink="/auth">Register</a></li>
+            <li><a class="dropdown-item" routerLink="/edit" *ngIf="isAuthenticated">Edit User</a></li>
             <li>
               <hr class="dropdown-divider">
             </li>
