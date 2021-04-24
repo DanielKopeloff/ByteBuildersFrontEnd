@@ -76,7 +76,7 @@ const routes: Routes = [
 
   ],
   imports: [
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'}),
     BrowserModule,
     HttpClientModule,
     NgbModule,
