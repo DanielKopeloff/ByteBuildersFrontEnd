@@ -29,6 +29,7 @@ export class CheckoutComponent implements OnInit {
   checkoutFormGroup: FormGroup;
   totalPrice = 0;
   totalQuantity = 0;
+  isLoading = false;
 
   creditCardYears: number[] = [];
   creditCardMonths: number[] = [];
@@ -245,10 +246,8 @@ export class CheckoutComponent implements OnInit {
 
     this.checkoutService.addPayment(payment).subscribe(
       data=>this.backendPayment = data);
-
+    this.isLoading = true;
     setTimeout(()=> this.makeByteOrder(this.backendBillingAddress ,this.backendShippingAddress , byteOrder , productOrders) , 3000)
-     
-
     // this.checkoutService.placeOrder(purchase).subscribe(
     //   {
     //     next: response => {
@@ -298,7 +297,7 @@ export class CheckoutComponent implements OnInit {
       }
     );
   }
-
+  
   makeByteOrder(shipping:BackEndAddress , billing:BackEndAddress , byteOrder: ByteOrder , productOrders:ProductOrder[]){
     const backByteOrder = new BackEndByteOrder(byteOrder , shipping , billing , JSON.parse(this.storage.getItem('byteU')).userId);
 
