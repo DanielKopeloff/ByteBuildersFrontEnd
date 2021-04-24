@@ -4,7 +4,7 @@
       <div *ngIf="isLoading" style="text-align: center;">
         <app-loading-spinner></app-loading-spinner>
     </div>
-      <form [formGroup]="checkoutFormGroup" (ngSubmit)="onSubmit()" *ngIf="!isLoading">
+      <form [formGroup]="checkoutFormGroup" (ngSubmit)="onSubmit()" *ngIf="!isLoading" class="my-5">
         <div formGroupName="byteUser" class="form-area">
           <h3 class="display-4 text-center mt-5 mb-5">Customer Information</h3>
           <div class="row my-4">
