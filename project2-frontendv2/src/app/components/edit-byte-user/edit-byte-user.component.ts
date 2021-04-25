@@ -36,7 +36,7 @@ export class EditByteUserComponent implements OnInit {
 
     this.editByteUserService.edit(username,password, firstName, lastName, email, role, profilePic).subscribe(
       resData =>{
-          console.log(resData);
+          // console.log(resData);
           this.isLoading = false;
       },
       errorMessage => {
