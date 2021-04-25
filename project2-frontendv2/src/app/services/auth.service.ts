@@ -4,7 +4,7 @@ import { Router } from "@angular/router";
 import { Subject, throwError } from "rxjs";
 import { catchError, tap } from "rxjs/operators";
 import { ByteUserLogin } from "../common/byte-login-stuff";
-import { ByteUser } from "../common/byte-user";
+
 
 export interface AuthReponse{
     expireDate: string;
@@ -29,13 +29,13 @@ export class AuthService{
 
     constructor(private http: HttpClient, private router: Router) {
         this.byteUser = JSON.parse(this.storage.getItem('byteU'));
-        console.log(this.byteUser);
+        //console.log(this.byteUser);
     }
 
     signup(username: string, password: string,
         firstName: string, lastName: string,
         email: string, role: number, profilePic: string){
-        return this.http.post('http://localhost:8080/api/byte-user',
+        return this.http.post('http://bytebuildersbackend-env.eba-s2pnimcq.us-east-2.elasticbeanstalk.com0/api/byte-user',
         {
             "username": username,
             "password": password,
@@ -58,7 +58,7 @@ export class AuthService{
     }
 
     login(username: string, password: string){
-        return this.http.post<AuthReponse>('http://localhost:8080/authenticate',
+        return this.http.post<AuthReponse>('http://bytebuildersbackend-env.eba-s2pnimcq.us-east-2.elasticbeanstalk.com/authenticate',
         {
             "username": username,
             "password": password
