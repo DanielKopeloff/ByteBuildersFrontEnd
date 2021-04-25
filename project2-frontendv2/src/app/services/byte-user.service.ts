@@ -11,9 +11,9 @@ export class ByteUserService {
 
   prodId :string;
 
-  private baseUrl = 'http://localhost:8080/api/byte-user';
-  public baseUrlTest = 'http://localhost:8080/api/byte-user';
-  private users = 'http://localhost:8080/api/byte-user/search/reviewUsers?productId=';
+  private baseUrl = 'http://bytebuildersbackend-env.eba-s2pnimcq.us-east-2.elasticbeanstalk.com/api/byte-user';
+  public baseUrlTest = 'http://bytebuildersbackend-env.eba-s2pnimcq.us-east-2.elasticbeanstalk.com/api/byte-user';
+  private users = 'http://bytebuildersbackend-env.eba-s2pnimcq.us-east-2.elasticbeanstalk.com/api/byte-user/search/reviewUsers?productId=';
 
   constructor(private httpClient: HttpClient) { }
 

@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { ByteUser } from '../common/byte-user';
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class EditByteUserService {
   byteUser: any;
 
 
-  private baseUrl = 'http://localhost:8080/api/byte-user';
+  private baseUrl = 'http://bytebuildersbackend-env.eba-s2pnimcq.us-east-2.elasticbeanstalk.com/api/byte-user';
 
   constructor(private http: HttpClient) {
     this.byteUser = JSON.parse(this.storage.getItem('byteU'));
@@ -58,9 +58,9 @@ export class EditByteUserService {
     edit(username: string, password: string,
       firstName: string, lastName: string, 
       email: string, role: number, profilePic: string){
-      console.log(this.byteUser);
-      console.log("This is the user ID" +  this.byteUser.userId);
-      return this.http.put(`http://localhost:8080/api/byte-user/${this.byteUser.userId}`,
+      // console.log(this.byteUser);
+      // console.log("This is the user ID" +  this.byteUser.userId);
+      return this.http.put(`http://bytebuildersbackend-env.eba-s2pnimcq.us-east-2.elasticbeanstalk.com/api/byte-user/${this.byteUser.userId}`,
       {
           "username": username,
           "password": password,

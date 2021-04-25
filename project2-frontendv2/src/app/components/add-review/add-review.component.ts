@@ -1,6 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ByteOrder } from 'src/app/common/byte-order';
 import { ReviewService } from 'src/app/services/review.service';
 
 @Component({
@@ -40,8 +39,8 @@ export class AddReviewComponent implements OnInit {
 
   getByteOrder(){
 
-    console.log(this.byteUser);
-    console.log("This is the user ID" +  this.byteUser.userId);
+    // console.log(this.byteUser);
+    // console.log("This is the user ID" +  this.byteUser.userId);
     this.reviewService.getByteOrders(this.activatedRoute.snapshot.paramMap.get('id'), this.byteUser.userId).subscribe(data => this.byteOrder = data)
   }
 
@@ -65,7 +64,7 @@ export class AddReviewComponent implements OnInit {
      const body ={
     "comment":`${comment}`,
       "rating":`${this.ratingElement.nativeElement.value}`,
-      "byteOrder":`http://localhost:8080/api/byte-order/${this.byteOrder.valueOf()}`
+      "byteOrder":`http://bytebuildersbackend-env.eba-s2pnimcq.us-east-2.elasticbeanstalk.com/api/byte-order/${this.byteOrder.valueOf()}`
     }
     this.reviewService.addReview(this.activatedRoute.snapshot.paramMap.get('id') , body);
   }

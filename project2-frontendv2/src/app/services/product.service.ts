@@ -10,11 +10,11 @@ import {Category} from '../common/category';
 })
 export class ProductService {
 
-  private baseUrl = 'http://localhost:8080/api/product';
-  public baseUrlTest = 'http://localhost:8080/api/product';
-  private categoryUrl = 'http://localhost:8080/api/category';
-  private hotUrl = 'http://localhost:8080/api/product/search/hotItems';
-  private newItemsUrl = 'http://localhost:8080/api/product/search/newItems';
+  private baseUrl = 'http://bytebuildersbackend-env.eba-s2pnimcq.us-east-2.elasticbeanstalk.com/api/product';
+  public baseUrlTest = 'http://bytebuildersbackend-env.eba-s2pnimcq.us-east-2.elasticbeanstalk.com/api/product';
+  private categoryUrl = 'http://bytebuildersbackend-env.eba-s2pnimcq.us-east-2.elasticbeanstalk.com/api/category';
+  private hotUrl = 'http://bytebuildersbackend-env.eba-s2pnimcq.us-east-2.elasticbeanstalk.com/api/product/search/hotItems';
+  private newItemsUrl = 'http://bytebuildersbackend-env.eba-s2pnimcq.us-east-2.elasticbeanstalk.com/api/product/search/newItems';
 
   constructor(private httpClient: HttpClient) {
   }

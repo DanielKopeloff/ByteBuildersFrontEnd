@@ -22,7 +22,7 @@ export class CategoryListComponent implements OnInit {
   listCategories() {
     this.productService.getCategories().subscribe(
       data => {
-        console.log('Product Categories=' + JSON.stringify(data));
+        //console.log('Product Categories=' + JSON.stringify(data));
         this.categories = data;
       }
     );
