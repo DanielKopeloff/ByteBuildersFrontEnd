@@ -184,6 +184,7 @@ export class CheckoutComponent implements OnInit {
 
     if (this.checkoutFormGroup.invalid) {
       this.checkoutFormGroup.markAllAsTouched();
+      return;
     }
 
     let byteOrder = new ByteOrder();
