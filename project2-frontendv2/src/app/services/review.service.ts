@@ -12,16 +12,16 @@ export class ReviewService {
 
   prodID : number;
 
-  private getAllReviews = 'http://localhost:8080/api/review/search/product_reviews';
-  public getAllTest = 'http://localhost:8080/api/review/search/product_reviews';
-  private getByteOrder= 'http://localhost:8080/api/byte-order/search/byteOrderReview/';
-  private postReview = 'http://localhost:8080/api/review';
+  private getAllReviews = 'http://bytebuildersbackend-env.eba-s2pnimcq.us-east-2.elasticbeanstalk.com/api/review/search/product_reviews';
+  public getAllTest = 'http://bytebuildersbackend-env.eba-s2pnimcq.us-east-2.elasticbeanstalk.com/api/review/search/product_reviews';
+  private getByteOrder= 'http://bytebuildersbackend-env.eba-s2pnimcq.us-east-2.elasticbeanstalk.com/api/byte-order/search/byteOrderReview/';
+  private postReview = 'http://bytebuildersbackend-env.eba-s2pnimcq.us-east-2.elasticbeanstalk.com/api/review';
 
  
 
 
   constructor(private httpClient: HttpClient) {
-    console.log("This is the hitting"  + this.getReviews())
+    this.getReviews();
    }
 
   getReviewsTest(){

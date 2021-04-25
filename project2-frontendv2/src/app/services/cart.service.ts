@@ -12,7 +12,7 @@ import { CartItem } from '../common/cart-item';
 export class CartService {
 
 
-  private baseUrl = "http://localhost:8080/api/product/search/cart";
+  // private baseUrl = "http://localhost:8080/api/product/search/cart";
   cartItems:CartItem[] = [];
 
   /**
@@ -41,14 +41,14 @@ export class CartService {
    
    }
 
-  getCart(userID : number):
-  Observable<Product[]>{
-    const searchUrl = `${this.baseUrl}/?userId=${userID}`
-    // const searchUrl = `${this.baseUrl}/?userId=8`
-    return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(
-      map(response => response._embedded.products)
-    );
-  }
+  // getCart(userID : number):
+  // Observable<Product[]>{
+  //   const searchUrl = `${this.baseUrl}/?userId=${userID}`
+  //   // const searchUrl = `${this.baseUrl}/?userId=8`
+  //   return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(
+  //     map(response => response._embedded.products)
+  //   );
+  // }
 
   /**
    * Check if we already have the item in the Cart

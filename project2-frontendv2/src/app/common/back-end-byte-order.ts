@@ -19,7 +19,7 @@ export class BackEndByteOrder {
     this.totalQuantity = byteOrder.totalQuantity;
     this.shippingAddress = shippingAddress._links.self.href;
     this.billingAddress = billing._links.self.href;
-    this.byteUser = `http://localhost:8080/api/byte-user/${userId}`
+    this.byteUser = `http://bytebuildersbackend-env.eba-s2pnimcq.us-east-2.elasticbeanstalk.com/${userId}`
 
 
   }

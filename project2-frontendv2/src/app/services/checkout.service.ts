@@ -14,12 +14,12 @@ import { Product } from '../common/product';
 })
 export class CheckoutService {
 
-  private purchaseUrl = 'http://localhost:8080/api/checkout/purchase';
-  private addAddressUrl = 'http://localhost:8080/api/address';
-  private addPaymentUrl = 'http://localhost:8080/api/payment';
-  private addByteOrderUrl = 'http://localhost:8080/api/byte-order';
-  private addProductOrderUrl = 'http://localhost:8080/api/product-order';
-  private productsURL = 'http://localhost:8080/api/product/';
+  private purchaseUrl = 'http://bytebuildersbackend-env.eba-s2pnimcq.us-east-2.elasticbeanstalk.com/api/checkout/purchase';
+  private addAddressUrl = 'http://bytebuildersbackend-env.eba-s2pnimcq.us-east-2.elasticbeanstalk.com/api/address';
+  private addPaymentUrl = 'http://bytebuildersbackend-env.eba-s2pnimcq.us-east-2.elasticbeanstalk.com/api/payment';
+  private addByteOrderUrl = 'http://bytebuildersbackend-env.eba-s2pnimcq.us-east-2.elasticbeanstalk.com/api/byte-order';
+  private addProductOrderUrl = 'http://bytebuildersbackend-env.eba-s2pnimcq.us-east-2.elasticbeanstalk.com/api/product-order';
+  private productsURL = 'http://bytebuildersbackend-env.eba-s2pnimcq.us-east-2.elasticbeanstalk.com/api/product/';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -43,10 +43,8 @@ export class CheckoutService {
     return this.httpClient.post<BackEndProductOrder>(this.addProductOrderUrl , product);
   }
 
-  /**
-   * Im a little torn on if to implement this because i want to keep the API calls down
-   * But my thinking for this is I have to grab the stock of the product from the DB because if two users make an order of the the same product then those stock values will no longer be valid. So I would use this method of getting the stock from the DB in stead of the in session memory because that value might be stale 
-   */
+ 
+  
   updateStock(prod : ProductOrder) {
     const searchUrl = `${this.productsURL}${prod.productId}`;
     let currProd : Product;
