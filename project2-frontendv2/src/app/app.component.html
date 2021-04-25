@@ -13,7 +13,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#"></a>
+          <!-- <a class="nav-link active" aria-current="page" href="#"></a> -->
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -43,7 +43,7 @@
       </ul>
     </div>
     <div class="mx-4">
-      <a href="/home">
+      <a routerLink="/home">
         <i class="fa fa-home fa-2x icon-a mr-3"></i>
       </a>
     </div>
@@ -51,7 +51,7 @@
       <app-cart-status></app-cart-status>
     </div>
     <div *ngIf="!isAuthenticated">
-      <a href="/auth">
+      <a routerLink="/auth">
         <i class="fa fa-sign-in-alt fa-2x mr-1"></i>
       </a>
       
