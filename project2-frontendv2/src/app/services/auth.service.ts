@@ -35,7 +35,7 @@ export class AuthService{
     signup(username: string, password: string,
         firstName: string, lastName: string,
         email: string, role: number, profilePic: string){
-        return this.http.post('http://bytebuildersbackend-env.eba-s2pnimcq.us-east-2.elasticbeanstalk.com0/api/byte-user',
+        return this.http.post('http://bytebuildersbackend-env.eba-s2pnimcq.us-east-2.elasticbeanstalk.com/api/byte-user',
         {
             "username": username,
             "password": password,
