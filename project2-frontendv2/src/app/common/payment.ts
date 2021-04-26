@@ -6,7 +6,7 @@ export class Payment {
   creditCard:string ;
   expirationDateMonth:number;
   expirationDateYear:string;
-  byteUser:string ="http://localhost:8080/api/byte-user/";
+  byteUser:string ="http://bytebuildersbackend-env.eba-s2pnimcq.us-east-2.elasticbeanstalk.com/api/byte-user/";
   _links: {
 
     self : {
